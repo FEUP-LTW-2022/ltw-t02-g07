@@ -10,6 +10,9 @@ DROP TABLE IF EXISTS Owner;
 DROP TABLE IF EXISTS User;
 
 
+PRAGMA foreign_keys=ON;
+
+
 CREATE TABLE User
 (
     UserId INTEGER NOT NULL,
@@ -22,8 +25,12 @@ CREATE TABLE User
 
 CREATE TABLE Owner
 (
-    OwnerId INTEGER NOT NULL, 
-    FOREIGN KEY(OwnerId) REFERENCES User (UserId)
+    OwnerId INTEGER NOT NULL,
+    Name NVARCHAR(30) NOT NULL,
+    Password NVARCHAR(30) NOT NULL,
+    Address NVARCHAR(30),
+    PhoneNumber NVARCHAR(20), 
+    CONSTRAINT PK_Owner PRIMARY KEY (OwnerId)
 );
 
 CREATE TABLE Restaurant
@@ -44,8 +51,8 @@ CREATE TABLE Dish
     Price REAL,
     Category NVARCHAR(30),
     Picture NVARCHAR(200),
-    Id_restaurant INTEGER,
     Promotion REAL DEFAULT 1.0,
+    Id_restaurant INTEGER,
     CONSTRAINT PK_Dish PRIMARY KEY (DishId),
     FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId)
 );
@@ -75,7 +82,10 @@ CREATE TABLE Favorite
 CREATE TABLE Driver
 (
     DriverId INTEGER,
-    FOREIGN KEY(DriverId) REFERENCES User(UserId)  
+    Name NVARCHAR(30) NOT NULL,
+    Password NVARCHAR(30) NOT NULL,
+    PhoneNumber NVARCHAR(20), 
+    CONSTRAINT PK_Driver PRIMARY KEY (DriverId)
 );
 
 CREATE TABLE Order_row
@@ -97,3 +107,15 @@ CREATE TABLE Order_list
     FOREIGN KEY(Id_order) REFERENCES Order_row (OrderId),
     FOREIGN KEY(Id_dish) REFERENCES Dish (DishId)
 );
+
+
+INSERT INTO Owner (OwnerId, Name, Password, Address, PhoneNumber) VALUES (1, 'Owner1', 'Password1', 'House1', '1234');
+INSERT INTO User (UserId, Name, Password, Address, PhoneNumber) VALUES (1, 'User1', 'Password2', 'House2', '5678');
+INSERT INTO Driver (DriverId, Name, Password, PhoneNumber) VALUES (1, 'Driver1', 'Password3', '9101');
+INSERT INTO Restaurant (RestaurantId, Name, Address, Category, Id_owner) VALUES (1, 'Restaurant1', 'House2', 'Category1', 1);
+INSERT INTO Dish (DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant) VALUES (1, 'Dish1', 'Description1', 1, 'Category1', 'Picture1.png', 0, 1);
+INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_user) VALUES (1, 5, 'Description2', 'Picture2.png', 1, 1);
+INSERT INTO Favorite (Id_user, Id_dish) VALUES (1, 1);
+INSERT INTO Order_row (Orderid, State_order, Id_user, Id_driver) VALUES (1, 'delivered', 1, 1);
+INSERT INTO Order_list (Id_order, Id_dish) VALUES (1, 1)
+
