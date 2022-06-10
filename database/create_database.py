@@ -10,7 +10,7 @@ if path.exists("dblite.db"): #deletes db if exists
 
 
 #create db file and applies scheme
-connection = sqlite3.connect('dblite.db')
+connection = sqlite3.connect("dblite.db")
 cursor = connection.cursor()
 sql_file = open("dblite.sql")
 sql_as_string = sql_file.read()
