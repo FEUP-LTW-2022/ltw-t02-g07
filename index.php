@@ -9,7 +9,7 @@
 
   $db = getDatabaseConnection();
 
-  $restaurants = getRestaurants($db, 1);
+  $restaurants = getRestaurants($db, 20);
 
   drawHeader();
   drawRestaurants($restaurants);
