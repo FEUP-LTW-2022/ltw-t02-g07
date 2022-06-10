@@ -1,4 +1,4 @@
-<?php declare(trit_types = 1); ?>
+<?php declare(strict_types = 1); ?>
 
 <!-- Draws the header of the page -->
 <?php function drawHeader(){ ?>
