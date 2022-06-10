@@ -2,7 +2,7 @@
   declare(strict_types = 1);
 
   function getRestaurants(PDO $db, int $count) {
-    $stmt = $db->prepare('SELECT RestaurantId, Name FROM Restaurant LIMIT ?');
+    $stmt = $db->prepare('SELECT RestaurantId, Name, Picture FROM Restaurant LIMIT ?');
     $stmt->execute(array($count));
 
     $restaurants = array();
@@ -10,6 +10,7 @@
       $restaurants[] = array(
         'id' => $restaurant['RestaurantId'],
         'name' => $restaurant['Name'],
+        'picture' => $restaurant['Picture'],
         'address' => $restaurant['Address'],
         'category' => $restaurant['Category'],
         'idOwner' => $restaurant['Id_owner']

@@ -7,7 +7,7 @@
   <section id="restaurants">
     <?php foreach($restaurants as $restaurant) { ?> 
       <article>
-        <img src= $restaurant['']>
+        <img src="../resources/restaurants/<?=$restaurant['picture']?>">
         <a href="restaurant.php?id=1"><?=$restaurant['name']?></a>
       </article>
     <?php } ?>
