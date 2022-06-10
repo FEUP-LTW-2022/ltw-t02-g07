@@ -1,5 +1,8 @@
 <?php
+
   declare(strict_types = 1);
+  session_start();
+
 
   require_once('database/connection.db.php');
   require_once('database/restaurant.db.php');
@@ -9,7 +12,7 @@
 
   $db = getDatabaseConnection();
 
-  $restaurants = getRestaurants($db, 1);
+  $restaurants = getRestaurants($db, 20);
 
   drawHeader();
   drawRestaurants($restaurants);

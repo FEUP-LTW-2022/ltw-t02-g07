@@ -9,6 +9,8 @@
       <article>
         <img src="../resources/restaurants/<?=$restaurant['picture']?>">
         <a href="restaurant.php?id=1"><?=$restaurant['name']?></a>
+        <p class="info"><?=$restaurant['score']?>★<p>
+        <p class="info">Address: <?=$restaurant['address']?><p>
       </article>
     <?php } ?>
   </section>

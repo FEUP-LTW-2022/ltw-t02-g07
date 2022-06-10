@@ -1,7 +1,5 @@
 <?php
-
     declare(strict_types = 1);
-
     function getDatabaseConnection(): PDO {
 
         $db = new PDO('sqlite:database/dblite.db');
@@ -10,5 +8,4 @@
 
         return $db;
     }
-
 ?>

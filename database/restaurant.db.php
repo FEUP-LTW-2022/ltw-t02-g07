@@ -2,7 +2,7 @@
   declare(strict_types = 1);
 
   function getRestaurants(PDO $db, int $count) {
-    $stmt = $db->prepare('SELECT RestaurantId, Name, Picture FROM Restaurant LIMIT ?');
+    $stmt = $db->prepare('SELECT RestaurantId, Name, Picture, Address, Category, Id_owner FROM Restaurant LIMIT ?');
     $stmt->execute(array($count));
 
     $restaurants = array();
@@ -13,7 +13,8 @@
         'picture' => $restaurant['Picture'],
         'address' => $restaurant['Address'],
         'category' => $restaurant['Category'],
-        'idOwner' => $restaurant['Id_owner']
+        'idOwner' => $restaurant['Id_owner'],
+        'score' => getRestaurantScore($db, intval($restaurant['RestaurantId']))
       );
     }
 
@@ -32,7 +33,7 @@
         'address' => $restaurant['Address'],
         'category' => $restaurant['Category'],
         'idOwner' => $restaurant['Id_owner'],
-        'dishes' => getRestaurantDishes($db, $id)
+        'score' => getRestaurantScore($db, $id)
     );
   }
 
@@ -62,5 +63,20 @@
 
     return $dishes;
   }
+
+  function getRestaurantScore(PDO $db, int $id){
+    $stmt = $db->prepare('
+      SELECT AVG(Score) as Score
+      FROM Review
+      WHERE Id_restaurant = ?
+    ');
+    $stmt->execute(array($id));
+
+    $review = $stmt->fetch();
+
+
+    return $review['Score'];
+  }
+
 
 ?>
