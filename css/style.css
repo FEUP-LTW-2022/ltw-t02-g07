@@ -1,0 +1,163 @@
+
+/* fonts */ 
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+
+
+*{
+    margin: 0 0;
+    padding: 0 0;
+    font-family: "Poppins", sans-serif;
+
+}
+
+
+
+
+/*
+body {
+    margin: 0 auto;
+
+    --background-color: #ffffff;
+    --main-color: #e95f39;
+}
+
+body>header {
+    display: flex;
+
+    padding: 1em;
+
+    background-color: var(--background-color);
+}
+
+body>header h1 {
+    font-size: 3rem;
+    flex-grow: 1;
+}
+
+body>header h1 a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+body>header form {
+    display: grid;
+}
+
+body>header form.login {
+    grid-template-columns: auto auto;
+    gap: 1em;
+}
+
+body>header form.login input {
+    grid-column-end: span 2;
+}
+
+main {
+    background-color: var(--background-color);
+
+    margin: 1em 0;
+    padding: 1em;
+}
+
+main a {
+    text-align: center;
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+body>main h2 {
+    text-align: center;
+    font-size: 2rem;
+    flex-grow: 1;
+}
+
+#SearchBar {
+    background-color: bisque;
+    padding: 3% 0;
+    width: 100%;
+}
+
+#SearchBar form.search{
+    text-align: center;
+    padding: 1%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+#Restaurants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+}
+
+#Restaurants article {
+    display: grid;
+    justify-content: center;
+    width: 200px;
+}
+
+#Restaurants article * {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+#Restaurants article a {
+    color: var(--main-color);
+    text-decoration: none;
+
+    font-size: 1em;
+
+    align-self: center;
+    justify-self: center;
+
+    text-align: center;
+}
+
+#dishes {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#dishes article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+}
+
+#dishes article img {
+    grid-row-end: span 2;
+}
+
+#dishes article a {
+    font-size: 2em;
+    align-self: flex-end;
+}
+
+#dishes article p.info {
+    align-self: flex-start;
+}
+
+#Reviews {
+    width: 100%;
+}
+
+#Reviews td, #Reviews th {
+    padding: 1em;
+    text-align: left;
+}
+
+#Reviews td:last-child, #Reviews th:last-child {
+    text-align: right;
+}
+
+footer {
+    background-color: black;
+    padding: 1em;
+    color: white;
+}
+
+*/
