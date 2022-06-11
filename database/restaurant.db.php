@@ -33,7 +33,7 @@
         'address' => $restaurant['Address'],
         'category' => $restaurant['Category'],
         'idOwner' => $restaurant['Id_owner'],
-        'score' => getRestaurantScore($db, $id)
+        'dishes' => getRestaurantdishes($db, $id)
     );
   }
 
