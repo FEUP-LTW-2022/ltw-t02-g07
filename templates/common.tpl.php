@@ -22,7 +22,13 @@
                     <li><a href="index.php">Home</a></li>
                     <li><a href="favorite.php">Favorites</a></li>
                     <li><a href="orders">Orders</a></li>
-                    <li><a href="login.php">Login</a></li>
+                    <?php 
+                      if (isset($_SESSION['id'])) {
+                        echo'<li><a href="action_logout.php">Logout</a></li>';
+                        echo'<li><a href="profile.php">Profile</a></li>';
+                      }
+                      else echo'<li><a href="login.php">Login</a></li>';
+                    ?>
                   </ul>
                 </nav>
             </header>
@@ -43,15 +49,22 @@
 </html>
 <?php } ?>
 
-<!-- Draws the login of the page 
 
 <?php function drawLoginForm() { ?>
   <form action="action_login.php" method="post" class="login">
-    <input type="text" name="username" placeholder="email">
+    <input type="email" name="email" placeholder="email">
     <input type="password" name="password" placeholder="password">
     <a href="register.php">Register</a>
     <button type="submit">Login</button>
   </form>
 <?php } ?>
 
--->
+<?php function drawRegistrationForm() { ?>
+  <form action="action_register.php" method="post" class="register">
+    <input type="email" name="email" placeholder="email">
+    <input type="name" name="name" placeholder="name">
+    <input type="password" name="password" placeholder="password">
+    <button type="submit">Register</button>
+  </form>
+<?php } ?>
+

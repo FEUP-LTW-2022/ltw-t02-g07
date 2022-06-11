@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "LTW",
+            "database": "${workspaceFolder:ltw-t02-g07}/database/dblite.db"
+        }
+    ]
+}
