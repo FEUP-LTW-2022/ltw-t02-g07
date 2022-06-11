@@ -17,6 +17,7 @@ CREATE TABLE User
 (
     UserId INTEGER NOT NULL,
     Name NVARCHAR(30) NOT NULL,
+    Email NVARCHAR(40) NOT NULL,
     Password NVARCHAR(30) NOT NULL,
     Address NVARCHAR(30),
     PhoneNumber NVARCHAR(20),
@@ -26,10 +27,9 @@ CREATE TABLE User
 CREATE TABLE Owner
 (
     OwnerId INTEGER NOT NULL,
-    Name NVARCHAR(30) NOT NULL,
-    Password NVARCHAR(30) NOT NULL,
-    Address NVARCHAR(30),
-    PhoneNumber NVARCHAR(20), 
+    FOREIGN KEY (OwnerId)
+    REFERENCES User(UserId)
+    ON DELETE CASCADE,
     CONSTRAINT PK_Owner PRIMARY KEY (OwnerId)
 );
 
@@ -93,6 +93,7 @@ CREATE TABLE Driver
 (
     DriverId INTEGER,
     Name NVARCHAR(30) NOT NULL,
+    Email NVARCHAR(40) NOT NULL,
     Password NVARCHAR(30) NOT NULL,
     PhoneNumber NVARCHAR(20), 
     CONSTRAINT PK_Driver PRIMARY KEY (DriverId)
@@ -119,9 +120,9 @@ CREATE TABLE Order_list
 );
 
 
-INSERT INTO Owner (OwnerId, Name, Password, Address, PhoneNumber) VALUES (1, 'Owner1', 'Password1', 'House1', '1234');
-INSERT INTO User (UserId, Name, Password, Address, PhoneNumber) VALUES (1, 'User1', 'Password2', 'House2', '5678');
-INSERT INTO Driver (DriverId, Name, Password, PhoneNumber) VALUES (1, 'Driver1', 'Password3', '9101');
+INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (1, 'User1', 'email2@gmail.com','Password2', 'House2', '5678');
+INSERT INTO Owner (OwnerId) VALUES (1);
+INSERT INTO Driver (DriverId, Name, Email, Password, PhoneNumber) VALUES (1, 'email2@gmail.com','Driver1', 'Password3', '9101');
 
 INSERT INTO Restaurant (RestaurantId, Name, Picture, Address, Category, Id_owner) VALUES (1, 'Pizza Palace', 'pizza.png', ' R Pádua Correia 25', 'Category1', 1);
 INSERT INTO Restaurant (RestaurantId, Name, Picture, Address, Category, Id_owner) VALUES (2, 'Zushi', 'sushi.png', 'R Doutor Alfredo Freitas 84', 'Category1', 1);
