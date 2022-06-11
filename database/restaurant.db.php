@@ -57,7 +57,6 @@
         'category' => $dish['Category'],
         'picture' => $dish['Picture'],
         'promotion' => $dish['Promotion'],
-        'price' => $dish['Price']
       );
     }
 

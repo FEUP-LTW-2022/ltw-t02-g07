@@ -8,7 +8,7 @@
     <?php foreach($restaurants as $restaurant) { ?> 
       <article>
         <img src="../resources/restaurants/<?=$restaurant['picture']?>">
-        <a href="restaurant.php?id=1"><?=$restaurant['name']?></a>
+        <a href="restaurant.php?id=<?=$restaurant['id']?>"><?=$restaurant['name']?></a>
         <p class="info"><?=$restaurant['score']?>★<p>
         <p class="info">Address: <?=$restaurant['address']?><p>
       </article>
@@ -24,8 +24,10 @@
   <section id="dishes">
     <?php foreach ($dishes as $dish) { ?>
     <article>
-      <a href="dish.php?id=1"><?=$dish['name']?></a>
-      <p class="info"><?=$dish['price']?></p>
+      <img src="../resources/dishes/<?=$dish['picture']?>">
+      <a href="dish.php?id=<?=$dish['id']?>"><?=$dish['name']?></a>
+      <p class="info"><?=$dish['description']?></p>
+      <p class="info">€<?=$dish['price']?></p>
     </article>
     <?php } ?>
   </section>
