@@ -86,7 +86,12 @@ header {
     padding: 2% 0;
 }
 
-#restaurantBox {
+#dishes {
+    background-color: blanchedalmond;
+    padding: 2% 0;
+}
+
+#optionBox {
     width: 43%;
     margin: 1%;
     padding: 2%;
@@ -95,29 +100,29 @@ header {
     border-radius: 13px;
 }
 
-#restaurantImage {
+#boxImage {
     width: 25%;
     border-radius: 10px;
     float: left;
 }
 
-#restaurantDesc {
+#boxDesc {
     width: 65%;
     margin: 0 5%;
     float: left;
 }
 
-#restaurantDesc a {
+#boxDesc a {
     color: #fa4b65;
     text-decoration: none;
     font-size: 2rem;
 }
 
-#restaurantDesc a:hover{
+#boxDesc a:hover{
     color: #f52c3d;
 }
 
-#restaurantDesc p {
+#boxDesc p {
     color: #464343;
     font-size: 1rem;
 }
