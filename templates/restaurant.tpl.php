@@ -3,16 +3,21 @@
 <!-- Draws all the restaurants -->
 
 <?php function drawRestaurants(array $restaurants) { ?>
-  <h2>Restaurants</h2>
   <section id="restaurants">
-    <?php foreach($restaurants as $restaurant) { ?> 
-      <article>
-        <img src="../resources/restaurants/<?=$restaurant['picture']?>">
-        <a href="restaurant.php?id=<?=$restaurant['id']?>"><?=$restaurant['name']?></a>
-        <p class="info"><?=$restaurant['score']?>★<p>
-        <p class="info">Address: <?=$restaurant['address']?><p>
-      </article>
-    <?php } ?>
+    <div id="part">
+      <h2>Restaurants</h2>
+      <?php foreach($restaurants as $restaurant) { ?> 
+        <article id="restaurantBox">
+          <img src="../resources/restaurants/<?=$restaurant['picture']?>" id="restaurantImage">
+          <div id ="restaurantDesc">
+            <a href="restaurant.php?id=<?=$restaurant['id']?>"><?=$restaurant['name']?></a>
+            <p class="info"><?=$restaurant['score']?>★<p>
+            <p class="info">Address: <?=$restaurant['address']?><p>
+          </div>
+        </article>
+      <?php } ?>
+      <div id="fix"></div>
+    </div>
   </section>
 <?php } ?>
 
