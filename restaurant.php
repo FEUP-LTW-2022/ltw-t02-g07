@@ -2,16 +2,23 @@
   declare(strict_types = 1);
 
   require_once('database/connection.db.php');
-  require_once('database/restaurant.db.php');
+  require_once('database/restaurant.class.php');
+  require_once('database/dish.class.php');
+  require_once('database/review.class.php');
 
   require_once('templates/common.tpl.php');
   require_once('templates/restaurant.tpl.php');
 
   $db = getDatabaseConnection();
 
-  $restaurant = getRestaurant($db, intval($_GET['id']));
+
+  $restaurant = Restaurant::getRestaurant($db, intval($_GET['id']));
+  $dishes = Dish::getRestaurantDishes($db, intval($_GET['id']));
+  $reviews = Review::getRestaurantReviews($db, intval($_GET['id']));
+  $score = Review::getRestaurantScore($db, intval($_GET['id']));
+
 
   drawHeader();
-  drawRestaurant($restaurant['name'], $restaurant['dishes']);
+  drawRestaurant($restaurant, $dishes, $reviews, $score);
   drawFooter();
 ?>

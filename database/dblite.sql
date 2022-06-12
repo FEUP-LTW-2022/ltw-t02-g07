@@ -133,8 +133,8 @@ INSERT INTO Dish (DishId, Name, Description, Price, Category, Picture, Promotion
 INSERT INTO Dish (DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant) VALUES (3, 'California roll', 'makizushi sushi roll containing cucumber, crab or imitation crab, and avocado.', 5, 'Sushi', 'california.png', 0, 2);
 INSERT INTO Dish (DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant) VALUES (4, 'Philadelphia roll', 'makizushi with smoked salmon, cream cheese, and cucumber.', 10, 'Sushi', 'philadelphia.png', 0, 2);
 
-INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_user) VALUES (1, 5, 'Description2', 'Picture2.png', 1, 1);
-INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_user) VALUES (2, 3.3, 'Description2', 'Picture2.png', 2, 1);
+INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_user) VALUES (1, 5, 'Amazing high quality pizza. Very greatly recommended.', 'pizza.png', 1, 1);
+INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_user) VALUES (2, 3.3, 'Good sushi, the sauce was not great.', 'sushi.png', 2, 1);
 
 
 INSERT INTO Favorite (Id_user, Id_dish) VALUES (1, 1);
