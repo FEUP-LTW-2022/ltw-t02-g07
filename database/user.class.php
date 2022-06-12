@@ -19,6 +19,21 @@
       
     }
 
+    function isOwner($db){
+      $stmt = $db->prepare("
+      SELECT UserId
+      FROM User
+      JOIN Owner ON User.UserId = Owner.OwnerId
+      WHERE UserId = ?
+    ");
+      $stmt->execute(array($this->id));
+      if($User = $stmt->fetch()){
+          return true;
+      } else {
+        return false;
+      }
+    }
+
     function save($db) {
         $stmt = $db->prepare('
           UPDATE User SET Name = ?, Address = ?, PhoneNumber = ?, Email = ?

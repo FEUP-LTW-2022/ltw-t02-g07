@@ -37,6 +37,7 @@
     );
   }
 
+
   function getRestaurantDishes(PDO $db, int $id) : array {
     $stmt = $db->prepare('
       SELECT DishId, Name, Description, Price, Category, Picture, Promotion
@@ -57,11 +58,53 @@
         'category' => $dish['Category'],
         'picture' => $dish['Picture'],
         'promotion' => $dish['Promotion'],
-        'price' => $dish['Price']
       );
     }
 
     return $dishes;
+  }
+  function getRestaurantOrders(PDO $db, int $id) : array {
+    $stmt = $db->prepare('
+      SELECT OrderId, Id_user, Id_driver, State_order
+      FROM Order_row
+      WHERE Id_restaurant = ?
+    ');
+    $stmt->execute(array($id));
+
+    $orders = array();
+
+    while ($order = $stmt->fetch()) {
+      $orders[] = array(
+        'id' => $order['OrderId'], 
+        'userId' => $order['Id_user'],
+        'driverId' => $order['Id_driver'],
+        'state' => $order['State_order'],
+      );
+    }
+
+    return $orders;
+  }
+  function getRestaurantReviews(PDO $db, int $id) : array {
+    $stmt = $db->prepare('
+      SELECT ReviewId, Score, Description, Picture, Id_user
+      FROM Review
+      WHERE Id_restaurant = ?
+    ');
+    $stmt->execute(array($id));
+
+    $reviews = array();
+
+    while ($review = $stmt->fetch()) {
+      $reviews[] = array(
+        'id' => $review['ReviewId'], 
+        'score' => $review['Score'],
+        'description' => $review['Description'],
+        'picture' => $review['Picture'],
+        'userId' => $review['Id_user'],
+      );
+    }
+
+    return $reviews;
   }
 
   function getRestaurantScore(PDO $db, int $id){
@@ -77,6 +120,17 @@
 
     return $review['Score'];
   }
+
+  function addRestaurant(PDO $db, string $name, string $picture, string $address, string $category, int $ownerId){
+      $stmt = $db->prepare('
+          INSERT INTO Restaurant (Name, Picture, Address, Category, Id_owner) VALUES (?,?,?,?,?)
+      ');
+      $stmt->execute(array($name,$picture,$address,$category,$ownerId));
+      return true;
+
+
+}
+  
 
 
 ?>
