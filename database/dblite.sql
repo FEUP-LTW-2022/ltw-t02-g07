@@ -130,7 +130,10 @@ INSERT INTO Restaurant (RestaurantId, Name, Picture, Address, Category, Id_owner
 INSERT INTO Restaurant (RestaurantId, Name, Picture, Address, Category, Id_owner) VALUES (2, 'Zushi', 'sushi.png', 'R Doutor Alfredo Freitas 84', 'Category1', 1);
 
 
-INSERT INTO Dish (DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant) VALUES (1, 'Dish1', 'Description1', 1, 'Category1', 'Picture1.png', 0, 1);
+INSERT INTO Dish (DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant) VALUES (1, 'Pizza Margherita', 'Diced tomatoes & stretchy mozzarella, topped with oregano.', 8, 'Italian', 'pizza.png', 0, 1);
+INSERT INTO Dish (DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant) VALUES (2, 'Lasagna', ' Layered with a rich meat sauce and a creamy parmesan white sauce, plus the perfect amount of mozzarella cheese!', 10, 'Italian', 'lasagna.png', 0, 1);
+INSERT INTO Dish (DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant) VALUES (3, 'California roll', 'makizushi sushi roll containing cucumber, crab or imitation crab, and avocado.', 5, 'Sushi', 'california.png', 0, 2);
+INSERT INTO Dish (DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant) VALUES (4, 'Philadelphia roll', 'makizushi with smoked salmon, cream cheese, and cucumber.', 10, 'Sushi', 'philadelphia.png', 0, 2);
 
 INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_user) VALUES (1, 5, 'Description2', 'Picture2.png', 1, 1);
 INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_user) VALUES (2, 3.3, 'Description2', 'Picture2.png', 2, 1);

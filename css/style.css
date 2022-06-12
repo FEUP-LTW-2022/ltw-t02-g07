@@ -1,4 +1,3 @@
-
 /* fonts */ 
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
@@ -15,6 +14,19 @@
 #fix {
     clear: both;
     float: none;
+}
+
+#part {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+h2 {
+    color: #383434;
+    font-size: 2rem;
+    margin-bottom: 2%;
+    text-align: center;
 }
 
 /* Navbar */
@@ -66,7 +78,6 @@ header {
 #navbar a:hover{
     color: #f52c3d;
 }
-
 tr[data-href]{
     cursor:pointer;
   }
@@ -141,6 +152,57 @@ tr[data-href]{
     clear: both;
     display: table;
   }
+
+/* Restaurants */
+
+#restaurants {
+    background-color: blanchedalmond;
+    padding: 2% 0;
+}
+
+#dishes {
+    background-color: blanchedalmond;
+    padding: 2% 0;
+}
+
+#optionBox {
+    width: 43%;
+    margin: 1%;
+    padding: 2%;
+    float: left;
+    background-color: white;
+    border-radius: 13px;
+}
+
+#boxImage {
+    width: 25%;
+    border-radius: 10px;
+    float: left;
+}
+
+#boxDesc {
+    width: 65%;
+    margin: 0 5%;
+    float: left;
+}
+
+#boxDesc a {
+    color: #fa4b65;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+#boxDesc a:hover{
+    color: #f52c3d;
+}
+
+#boxDesc p {
+    color: #464343;
+    font-size: 1rem;
+}
+
+
+
 /*
 body {
     margin: 0 auto;
