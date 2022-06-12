@@ -104,10 +104,12 @@ CREATE TABLE Order_row
     OrderId INTEGER NOT NULL,
     Id_user INTEGER NOT NULL,
     Id_driver INTEGER NOT NULL,
+    Id_restaurant INTEGER NOT NULL,
     State_order TEXT CHECK(State_order IN ("received","preparing","ready","delivered")),
     CONSTRAINT PK_Order PRIMARY KEY (OrderId),
     FOREIGN KEY(Id_user) REFERENCES User (UserId),
-    FOREIGN KEY(Id_driver) REFERENCES Driver (DriverId)
+    FOREIGN KEY(Id_driver) REFERENCES Driver (DriverId),
+    FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId)
 );
 
 CREATE TABLE Order_list
@@ -139,6 +141,6 @@ INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_use
 
 INSERT INTO Favorite (Id_user, Id_dish) VALUES (1, 1);
 INSERT INTO FavoriteRestaurant (Id_user, Id_restaurant) VALUES (1, 1);
-INSERT INTO Order_row (Orderid, State_order, Id_user, Id_driver) VALUES (1, 'delivered', 1, 1);
+INSERT INTO Order_row (Orderid, State_order, Id_user, Id_driver, Id_restaurant) VALUES (1, 'delivered', 1, 1,1);
 INSERT INTO Order_list (Id_order, Id_dish) VALUES (1, 1)
 
