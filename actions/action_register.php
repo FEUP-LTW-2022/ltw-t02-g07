@@ -4,7 +4,7 @@
   session_start();
 
   require_once('database/connection.db.php');
-  require_once('database/User.class.php');
+  require_once('database/user.class.php');
 
   $db = getDatabaseConnection();
 
@@ -12,7 +12,7 @@
   $role = $_POST['role'];
 
   if($role == 'owner'){
-    require_once('database/Owner.class.php');
+    require_once('database/owner.class.php');
     $user = User::getUserByEmail($db,$_POST['email']);
     Owner::addOwner($db,$user->id);
   }

@@ -41,7 +41,7 @@
       return $restaurants;
     }
   
-    function getRestaurant(PDO $db, int $id) : Restaurant {
+    static function getRestaurant(PDO $db, int $id) : Restaurant {
       $stmt = $db->prepare('SELECT RestaurantId, Name, Address, Picture, Category, Id_owner FROM Restaurant WHERE RestaurantId = ?');
       $stmt->execute(array($id));
   
@@ -57,8 +57,16 @@
       );
     }
 
+
+    static function addRestaurant(PDO $db, string $name, string $picture, string $address, string $category, int $ownerId){
+      $stmt = $db->prepare('
+          INSERT INTO Restaurant (Name, Picture, Address, Category, Id_owner) VALUES (?,?,?,?,?)
+      ');
+      $stmt->execute(array($name,$picture,$address,$category,$ownerId));
+      return true;
+
   }
 
-
+}
 
 ?>

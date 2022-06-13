@@ -4,7 +4,7 @@
   session_start();
 
   require_once('database/connection.db.php');
-  require_once('database/User.class.php');
+  require_once('database/user.class.php');
 
   $db = getDatabaseConnection();
 
