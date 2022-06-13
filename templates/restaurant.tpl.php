@@ -12,24 +12,28 @@
     <div id="part">
       <h2>Restaurants</h2>
       <div id="searchDiv">
-        <input id="searchInput" type="text" placeholder="Name..." class="form-control">
+        <input id="searchInput" type="search" placeholder="Name..." class="form-control">
+        <select name="orders" id="orderInput" onchange="stateChange()">
+          <option value="" selected disabled hidden>Score</option>
+          <option value="ascending">Low to High</option>
+          <option value="descending">High to Low</option>
+        </select>
       </div>
-      <div>
+      <div id = "restaurantContainer">
       <?php foreach($restaurants as $restaurant) { ?> 
-        <article id="optionBox" class="filterable">
+        <article id="optionBox" class="filterable" data-id=<?=$restaurant->id?>>
           <img src="../resources/restaurants/<?=$restaurant->picture?>" id="boxImage">
           <div id="boxDesc">
             <a id="RestaurantName" href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
             <p>Category: <?=$restaurant->category?><p>
-            <p>Address:<?=$restaurant->address?><p>
-            <p>Rating: <?php 
+            <p id="Score">Rating: <?php 
               $db = getDatabaseConnection();
               $rating = Restaurant::getRestaurantScore($db,$restaurant->id);
               if($rating == null){
-                echo '-';
+                //echo '-';
               }else{
                 echo $rating;
-                echo '★';
+                //echo '★';
               }
               ?>
             <p>
@@ -41,6 +45,7 @@
     </div>
   </section>
   <script>
+      //search by name filter
       $(document).ready(function(){
        $("#searchInput").on("keyup",function(){
         var value = $(this).val().toLowerCase();
@@ -50,6 +55,29 @@
         });
       });
     });
+
+    function stateChange(){
+            var select = document.getElementById("orderInput");
+            var sorted_divs = getSorted('.filterable',select.value).clone();
+        
+            $("#restaurantContainer").html(sorted_divs);
+
+
+
+          }
+      function getSorted(selector, orientation) {
+        return $($(selector).toArray().sort(function(a, b){
+          var aVal = parseFloat($(a).children("#boxDesc").children("#Score").text().split(":")[1]),
+          bVal = parseFloat($(b).children("#boxDesc").children("#Score").text().split(":")[1]);
+          if(orientation === "ascending"){
+            console.log("tusom");
+            return aVal - bVal;
+          }else{
+            console.log("somtu");
+            return bVal - aVal;
+          }
+    }));
+}
   </script>
 <?php } ?>
 

@@ -114,7 +114,7 @@
 
   }
 
-  function getRestaurantScore(PDO $db, int $id){
+  static function getRestaurantScore(PDO $db, int $id){
     $stmt = $db->prepare('
       SELECT AVG(Score) as Score
       FROM Review
