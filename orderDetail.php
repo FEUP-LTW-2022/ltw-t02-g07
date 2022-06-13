@@ -8,9 +8,9 @@
 
   $db = getDatabaseConnection();
 
-  $orders = Order::getOrders($db, 1);
+  $dishes = Order::getOrderDishes($db, intval($_GET['id']));
 
   drawHeader();
-  drawOrders($orders);
+  drawOrder($dishes, intval($_GET['id']));
   drawFooter();
 ?>

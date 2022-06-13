@@ -146,6 +146,11 @@ INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_use
 
 INSERT INTO Favorite (Id_user, Id_dish) VALUES (1, 1);
 INSERT INTO FavoriteRestaurant (Id_user, Id_restaurant) VALUES (1, 1);
-INSERT INTO Order_row (Orderid, State_order, Id_user, Id_driver, Id_restaurant) VALUES (1, 'delivered', 1, 1,1);
-INSERT INTO Order_list (Id_order, Id_dish) VALUES (1, 1)
+INSERT INTO Order_row (Orderid, State_order, Id_user, Id_driver, Id_restaurant) VALUES (1, 'delivered', 1, 1, 1);
+INSERT INTO Order_row (Orderid, State_order, Id_user, Id_driver, Id_restaurant) VALUES (2, 'preparing', 1, 1, 2);
+
+INSERT INTO Order_list (Id_order, Id_dish) VALUES (1, 1);
+INSERT INTO Order_list (Id_order, Id_dish) VALUES (1, 2);
+INSERT INTO Order_list (Id_order, Id_dish) VALUES (2, 3);
+
 

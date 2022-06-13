@@ -30,10 +30,10 @@
               $db = getDatabaseConnection();
               $rating = Restaurant::getRestaurantScore($db,$restaurant->id);
               if($rating == null){
-                //echo '-';
+                echo '-';
               }else{
                 echo $rating;
-                //echo '★';
+                echo '★';
               }
               ?>
             <p>
