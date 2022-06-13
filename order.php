@@ -6,9 +6,12 @@
   require_once('templates/common.tpl.php');
   require_once('templates/order.tpl.php');
 
+  session_start();
+
+
   $db = getDatabaseConnection();
 
-  $orders = Order::getOrders($db, 1);
+  $orders = Order::getOrders($db, intval($_SESSION['id']));
 
   drawHeader();
   drawOrders($orders);

@@ -124,6 +124,9 @@ CREATE TABLE Order_list
 
 
 INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (1, 'User1', 'email2@gmail.com','Password2', 'House2', '5678');
+INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (2, 'User1', 'email3@gmail.com','Password2', 'House2', '5678');
+
+
 INSERT INTO Owner (OwnerId) VALUES (1);
 INSERT INTO Driver (DriverId, Name, Email, Password, PhoneNumber) VALUES (1, 'email2@gmail.com','Driver1', 'Password3', '9101');
 
@@ -145,7 +148,13 @@ INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_use
 
 
 INSERT INTO Favorite (Id_user, Id_dish) VALUES (1, 1);
+INSERT INTO Favorite (Id_user, Id_dish) VALUES (2, 3);
+INSERT INTO Favorite (Id_user, Id_dish) VALUES (2, 4);
+
 INSERT INTO FavoriteRestaurant (Id_user, Id_restaurant) VALUES (1, 1);
+INSERT INTO FavoriteRestaurant (Id_user, Id_restaurant) VALUES (2, 2);
+
+
 INSERT INTO Order_row (Orderid, State_order, Id_user, Id_driver, Id_restaurant) VALUES (1, 'delivered', 1, 1, 1);
 INSERT INTO Order_row (Orderid, State_order, Id_user, Id_driver, Id_restaurant) VALUES (2, 'preparing', 1, 1, 2);
 

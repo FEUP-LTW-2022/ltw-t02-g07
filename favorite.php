@@ -5,11 +5,14 @@
 
   require_once('templates/common.tpl.php');
   require_once('templates/favorite.tpl.php');
+  
+  session_start();
+
 
   $db = getDatabaseConnection();
 
-  $favoriteRestaurants = Favorite::getFavoriteRestaurants($db, 1);
-  $favoriteDishes = Favorite::getFavoriteDishes($db, intval(1));
+  $favoriteRestaurants = Favorite::getFavoriteRestaurants($db, intval($_SESSION['id']));
+  $favoriteDishes = Favorite::getFavoriteDishes($db, intval($_SESSION['id']));
 
   drawHeader();
   drawFavorite($favoriteDishes, $favoriteRestaurants);

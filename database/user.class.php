@@ -43,7 +43,7 @@
         $stmt->execute(array($this->name, $this->address, $this->phone, $this->email, $this->id));
       }
     
-    static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
+    static function getUserWithPassword(PDO $db, string $email, string $password) : User {
       $stmt = $db->prepare("
         SELECT UserId, Name, Address, PhoneNumber, Email
         FROM User
