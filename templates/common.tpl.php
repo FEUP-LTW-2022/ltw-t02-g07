@@ -55,10 +55,13 @@
 
 <?php function drawLoginForm() { ?>
   <form action="actions/action_login.php" method="post" class="login">
-    <input type="email" name="email" placeholder="email">
-    <input type="password" name="password" placeholder="password">
-    <a href="register.php">Register</a>
-    <button type="submit">Login</button>
+    <div class="loginBox">
+      <input type="email" name="email" placeholder="email" class="inputInfo">
+      <input type="password" name="password" placeholder="password" class="inputInfo">
+      <a href="register.php">Register</a>
+      <button type="submit" class="bttn">Login</button>
+    </div>
+    <div id="fix"></div>
   </form>
 <?php } ?>
 
