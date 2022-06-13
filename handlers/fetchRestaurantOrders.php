@@ -7,6 +7,7 @@
 
 $db = getDatabaseConnection();
 $orders = getRestaurantOrders($db,intval($_POST['id']));
+
 echo '<table class="myTable">
         <tr>
             <th>Name</th>
@@ -17,11 +18,49 @@ echo '<table class="myTable">
 if(count($orders) > 0){
     foreach($orders as $order) {
       $user = User::getUser($db,$order['userId']);
+      $select = "";
+      switch ($order["state"]) {
+        case 'received':
+          $select = "<select onchange=\"stateChange(this.id)\" name=\"state\" id=\"state\">
+                        <option selected value=\"received\">received</option>
+                        <option value=\"preparing\">preparing</option>
+                        <option value=\"ready\">ready</option>
+                        <option value=\"delivered\">delivered</option>
+                      </select>";
+          break;
+        case 'preparing':
+          $select = "<select onchange=\"stateChange(this.id)\" name=\"state\" id=\"state\">
+                        <option value=\"received\">received</option>
+                        <option selectedvalue=\"preparing\">preparing</option>
+                        <option value=\"ready\">ready</option>
+                        <option value=\"delivered\">delivered</option>
+                      </select>";
+          break;
+        case 'ready':
+          $select = "<select onchange=\"stateChange(this.id)\" name=\"state\" id=\"state\">
+                        <option value=\"received\">received</option>
+                        <option value=\"preparing\">preparing</option>
+                        <option selected value=\"ready\">ready</option>
+                        <option value=\"delivered\">delivered</option>
+                      </select>";
+          break;
+        case 'delivered':
+          $select = "<select onchange=\"stateChange(this.id)\" name=\"state\" id=\"state\">
+                        <option value=\"received\">received</option>
+                        <option value=\"preparing\">preparing</option>
+                        <option value=\"ready\">ready</option>
+                        <option selected value=\"delivered\">delivered</option>
+                      </select>";
+          break;
+        default:
+          # code...
+          break;
+      }
       echo "<tr data-id=" . $order["id"] . ">
               <td>" . $user->name. "</td>
               <td>" . $user->phone . "</td>
               <td>" . "placeholder". "</td>
-              <td>" . $order["state"] ."</td>
+              <td>" . $select ."</td>
             </tr>";
     }
   }

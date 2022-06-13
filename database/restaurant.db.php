@@ -86,7 +86,7 @@
   }
   function getRestaurantReviews(PDO $db, int $id) : array {
     $stmt = $db->prepare('
-      SELECT ReviewId, Score, Description, Picture, Id_user
+      SELECT ReviewId, Score, Description, Picture, Id_user, Response
       FROM Review
       WHERE Id_restaurant = ?
     ');
@@ -101,6 +101,7 @@
         'description' => $review['Description'],
         'picture' => $review['Picture'],
         'userId' => $review['Id_user'],
+        'response' => $review['Response'],
       );
     }
 
@@ -126,7 +127,7 @@
           INSERT INTO Restaurant (Name, Picture, Address, Category, Id_owner) VALUES (?,?,?,?,?)
       ');
       $stmt->execute(array($name,$picture,$address,$category,$ownerId));
-      return true;
+      return $db->lastInsertId();
 
 
 }

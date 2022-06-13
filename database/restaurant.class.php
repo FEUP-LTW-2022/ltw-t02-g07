@@ -56,6 +56,32 @@
           intval($restaurant['Id_owner']),
       );
     }
+    static function getRestaurantDishes(PDO $db, int $id) : array {
+      $stmt = $db->prepare('
+        SELECT DishId, Name, Description, Price, Category, Picture, Promotion
+        FROM Dish 
+        WHERE Id_restaurant = ?
+        GROUP BY DishId
+      ');
+      $stmt->execute(array($id));
+  
+      $dishes = array();
+  
+      while ($dish = $stmt->fetch()) {
+        $dishes[] = new Dish(
+          $dish['DishId'], 
+          $dish['Name'],
+          $dish['Description'],
+          $dish['Price'],
+          $dish['Category'],
+          $dish['Picture'],
+          $dish['Promotion'],
+          $id,
+        );
+      }
+  
+      return $dishes;
+    }
 
 
     static function addRestaurant(PDO $db, string $name, string $picture, string $address, string $category, int $ownerId){

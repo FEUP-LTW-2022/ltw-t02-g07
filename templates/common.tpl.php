@@ -11,6 +11,7 @@
             <title>BRZO</title>
             <meta charset="utf-8">
             <link rel="stylesheet" href="css/style.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         </head>
         <body>
             <header>
@@ -44,7 +45,6 @@
 
 <?php function drawFooter() { ?>
     </main>
-
     <footer>
       BRZO &copy; 2022
     </footer>
@@ -78,155 +78,5 @@
 <?php } ?>
 
 
-<?php function drawOwnerStatistics(array $restaurants) { ?>
-  <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Restaurant table</title>
-      <link rel="stylesheet" href="css/style.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    </head>
-      <body>
-        <div class="row">
-          <div class="column">
-            <table id="restaurantsTable" class="myTable">
-              <caption>Restaurants</caption>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Picture</th>
-                  <th>Address</th>
-                  <th>Category</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php
-              if(count($restaurants) > 0){
-                foreach($restaurants as $restaurant) {
-                  echo "<tr data-id=" . $restaurant["id"] . ">
-                          <td>" . $restaurant["name"]. "</td>
-                          <td>" . $restaurant["picture"] . "</td>
-                          <td>" . $restaurant["address"]. "</td>
-                          <td>" . $restaurant["category"] ."</td>
-                        </tr>";
-                }
-              } else { echo "0 results"; }
-              ?>
-              </tbody>
-            </table>
-            <form id="addForm">
-              <input type="name" name="name" id="name" placeholder="name*">
-              <input type="picture" name="picture" id="picture" placeholder = "picture">
-              <input type="address" name="address" id="address" placeholder ="address*">
-              <input type="category" name="category" id="category" placeholder ="category*">
-              <button id="submit">Add restaurant</button>
-            </form>
-          </div>
-          <div class="column">
-            <div class="tab">
-              <button class="tablinks" onclick="openCity(event, 'dishes')" id="defaultOpen">Dishes</button>
-              <button class="tablinks" onclick="openCity(event, 'reviews')">Reviews</button>
-              <button class="tablinks" onclick="openCity(event, 'orders')">Orders</button>
-            </div>
 
-            <div id="dishes" class="tabcontent">
-            </div>
-
-            <div id="reviews" class="tabcontent">
-            </div>
-
-            <div id="orders" class="tabcontent">
-            </div>
-          </div>
-        </div>
-        <script>
-          //adding onclick element to all rows in table
-          $(document).ready(function(){
-            $("#submit").click(function() {
- 
-            var name = $("#name").val();
-            var picture = $("#picture").val();
-            var address = $("#address").val();
-            var category = $("#category").val();
-
-            if(name==''||address==''||category=='') {
-              alert("Please fill all mandatory fields");
-              return false;
-            }
-            $.ajax({
-              type: "POST",
-              url: "handlers/addRestaurant.php",
-              data: {
-                name: name,
-                picture: picture,
-                address: address,
-                category: category
-              },
-              cache: false,
-              success: function(data) {
-              },
-              error: function(xhr, status, error) {
-                console.error(xhr);
-              }
-              });
-            });
-          });
-          
-          //highlighting the selected row
-          $(function() {
-          $('td').click(function() {
-              $('tr').removeClass('active-row');
-              $(this).parent().addClass('active-row'); 
-              $.ajax({
-                type:"POST",
-                url:'handlers/fetchRestaurantDishes.php',
-                data:{id:this.parentElement.dataset.id},
-                dataType: "html",
-                success: function(data){
-                  $("#dishes").html(data); 
-                }
-              });
-              $.ajax({
-                type:"POST",
-                url:'handlers/fetchRestaurantReviews.php',
-                data:{id:this.parentElement.dataset.id},
-                dataType: "html",
-                success: function(data){
-                  $("#reviews").html(data); 
-                }
-              });
-              $.ajax({
-                type:"POST",
-                url:'handlers/fetchRestaurantOrders.php',
-                data:{id:this.parentElement.dataset.id},
-                dataType: "html",
-                success: function(data){
-                  $("#orders").html(data); 
-                }
-              });
-
-              });
-          });
-
-          //switching tabs
-          function openCity(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-              tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-              tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-            }
-
-          // Get the element with id="defaultOpen" and click on it
-            document.getElementById("defaultOpen").click();
-        </script>
-      </body>
-    </html>
-<?php } ?>
 

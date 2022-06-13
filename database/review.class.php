@@ -17,7 +17,7 @@
 
     }
 
-    public function getRestaurantReviews(PDO $db, int $id) : array {
+    static function getRestaurantReviews(PDO $db, int $id) : array {
       $stmt = $db->prepare('
         SELECT ReviewId, Score, Description, Picture
         FROM Review

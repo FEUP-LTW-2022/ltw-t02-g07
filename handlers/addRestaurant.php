@@ -11,7 +11,7 @@
 // POST Data
 
 $db = getDatabaseConnection();
-addRestaurant(
+$id = addRestaurant(
             $db,
             $_POST['name'],
             $_POST['picture'],
@@ -19,6 +19,7 @@ addRestaurant(
             $_POST['category'],
             $_SESSION['id']
             );
+echo json_encode($id);
 exit;
  
 ?>

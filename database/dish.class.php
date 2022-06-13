@@ -9,9 +9,10 @@
     public float $price;
     public string $category;
     public string $picture;
-    public int $promotion;
+    public float $promotion;
+    public int $restaurantId;
 
-    public function __construct(int $id, string $name, string $description, float $price, string $category, string $picture, int $promotion){
+    public function __construct(int $id, string $name, string $description, float $price, string $category, string $picture, float $promotion, int $restaurantId){
 
       $this-> id = $id;
       $this-> name = $name;
@@ -20,6 +21,7 @@
       $this-> category = $category;
       $this-> picture = $picture;
       $this-> promotion = $promotion;
+      $this-> restaurantId = $restaurantId;
 
     }
 
@@ -62,8 +64,14 @@
           floatval($dish['Price']),
           $dish['Category'],
           $dish['Picture'],
-          intval($dish['Promotion'])
+          floatval($dish['Promotion'])
       );
+    }
+
+    function addDish(PDO $db,int $restaurantId){
+      $stmt = $db->prepare('INSERT INTO Dish (Name,Description,Price,Category,Picture,Promotion,Id_restaurant) VALUES (?,?,?,?,?,?,?)');
+      $stmt->execute(array($this->name,$this->description,$this->price,$this->category,$this->picture,$this->promotion,$restaurantId));
+      return $db->lastInsertId();
     }
 
   }

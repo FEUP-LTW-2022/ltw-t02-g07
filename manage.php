@@ -9,6 +9,7 @@
   require_once('database/owner.class.php');
 
   require_once('templates/common.tpl.php');
+  require_once('templates/owner.tpl.php');
 
   $db = getDatabaseConnection();
 
