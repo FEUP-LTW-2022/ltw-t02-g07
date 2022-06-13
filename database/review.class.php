@@ -39,7 +39,7 @@
           floatval($review['Score']),
           $review['Description'],
           $review['Picture'],
-          $review['Id_user'],
+          intval($review['Id_user']),
           is_null($review['Response']) ? "" : $review['Response'],
         );
       }
