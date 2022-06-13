@@ -44,7 +44,8 @@
           floatval($dish['Price']),
           $dish['Category'],
           $dish['Picture'],
-          intval($dish['Promotion'])
+          intval($dish['Promotion']),
+          $id
         );
       }
   
@@ -52,7 +53,7 @@
     }
 
     static function getDish(PDO $db, int $id) : Dish {
-      $stmt = $db->prepare('SELECT DishId, Name, Description, Price, Category, Picture, Promotion FROM Dish WHERE DishId = ?');
+      $stmt = $db->prepare('SELECT DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant FROM Dish WHERE DishId = ?');
       $stmt->execute(array($id));
   
       $dish = $stmt->fetch();
@@ -64,7 +65,8 @@
           floatval($dish['Price']),
           $dish['Category'],
           $dish['Picture'],
-          floatval($dish['Promotion'])
+          floatval($dish['Promotion']),
+          intval($dish['Id_restaurant'])
       );
     }
 

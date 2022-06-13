@@ -93,6 +93,20 @@
 
   }
 
+  function getRestaurantScore(PDO $db, int $id){
+    $stmt = $db->prepare('
+      SELECT AVG(Score) as Score
+      FROM Review
+      WHERE Id_restaurant = ?
+    ');
+    $stmt->execute(array($id));
+
+    $review = $stmt->fetch();
+
+
+    return $review['Score'];
+  }
+
 }
 
 ?>
