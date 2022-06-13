@@ -9,18 +9,47 @@
   <section id="restaurants">
     <div id="part">
       <h2>Restaurants</h2>
+      <div id="searchDiv">
+        <input id="searchInput" type="text" placeholder="Name..." class="form-control">
+      </div>
+      <div>
       <?php foreach($restaurants as $restaurant) { ?> 
-        <article id="optionBox">
+        <article id="optionBox" class="filterable">
           <img src="../resources/restaurants/<?=$restaurant->picture?>" id="boxImage">
           <div id="boxDesc">
-            <a href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
-            <p class="info">Address: <?=$restaurant->address?><p>
+            <a id="RestaurantName" href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
+            <p>Category:<?=$restaurant->category?><p>
+            <p>Rating: <?php 
+              require_once('database/connection.db.php');
+              require_once('database/restaurant.db.php');
+              $db = getDatabaseConnection();
+              $rating = getRestaurantScore($db,$restaurant->id);
+              if($rating == null){
+                echo '-';
+              }else{
+                echo $rating;
+                echo '★';
+              }
+              ?>
+            <p>
           </div>
         </article>
       <?php } ?>
+      </div>
       <div id="fix"></div>
     </div>
   </section>
+  <script>
+      $(document).ready(function(){
+       $("#searchInput").on("keyup",function(){
+        var value = $(this).val().toLowerCase();
+        $(".filterable").filter(function(){
+          console.log($(this).children("#boxDesc").text());
+          $(this).toggle($(this).children("#boxDesc").children("#RestaurantName").text().toLowerCase().indexOf(value) > -1);
+        });
+      });
+    });
+  </script>
 <?php } ?>
 
 <!-- Draws the restaurant that is required -->
@@ -56,6 +85,8 @@
       <div id="fix"></div>
     </div>
   </section>
+<?php } ?>
 
-
+<?php function drawSearch() { ?>
+  <input id="searchInput" type="text" placeholder="Search..." class="form-control">
 <?php } ?>

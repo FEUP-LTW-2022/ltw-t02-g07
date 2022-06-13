@@ -41,7 +41,7 @@
       return $restaurants;
     }
   
-    function getRestaurant(PDO $db, int $id) : Restaurant {
+    static function getRestaurant(PDO $db, int $id) : Restaurant {
       $stmt = $db->prepare('SELECT RestaurantId, Name, Address, Picture, Category, Id_owner FROM Restaurant WHERE RestaurantId = ?');
       $stmt->execute(array($id));
   
@@ -55,6 +55,32 @@
           $restaurant['Category'],
           intval($restaurant['Id_owner']),
       );
+    }
+    static function getRestaurantDishes(PDO $db, int $id) : array {
+      $stmt = $db->prepare('
+        SELECT DishId, Name, Description, Price, Category, Picture, Promotion
+        FROM Dish 
+        WHERE Id_restaurant = ?
+        GROUP BY DishId
+      ');
+      $stmt->execute(array($id));
+  
+      $dishes = array();
+  
+      while ($dish = $stmt->fetch()) {
+        $dishes[] = new Dish(
+          $dish['DishId'], 
+          $dish['Name'],
+          $dish['Description'],
+          $dish['Price'],
+          $dish['Category'],
+          $dish['Picture'],
+          $dish['Promotion'],
+          $id,
+        );
+      }
+  
+      return $dishes;
     }
 
   }

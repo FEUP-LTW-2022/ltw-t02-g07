@@ -42,7 +42,7 @@ CREATE TABLE Restaurant
     Category NVARCHAR(20) NOT NULL,
     Id_owner INTEGER,
     CONSTRAINT PK_Restaurant PRIMARY KEY (RestaurantId),
-    FOREIGN KEY(Id_owner) REFERENCES Owner (OwnerId)
+    FOREIGN KEY(Id_owner) REFERENCES Owner (OwnerId) ON DELETE CASCADE
 );
 CREATE TABLE Dish
 (
@@ -55,7 +55,7 @@ CREATE TABLE Dish
     Promotion REAL DEFAULT 1.0,
     Id_restaurant INTEGER,
     CONSTRAINT PK_Dish PRIMARY KEY (DishId),
-    FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId)
+    FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId) ON DELETE CASCADE
 );
 
 CREATE TABLE Review
@@ -64,10 +64,11 @@ CREATE TABLE Review
     Score REAL NOT NULL,
     Description NVARCHAR(100),
     Picture NVARCHAR(200),
+    Response NVARCHAR(100),
     Id_restaurant INTEGER,
     Id_user INTEGER,
     CONSTRAINT PK_Review PRIMARY KEY (ReviewId),
-    FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId),
+    FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId) ON DELETE CASCADE,
     FOREIGN KEY(Id_user) REFERENCES User(UserId)
 );
 
@@ -86,7 +87,7 @@ CREATE TABLE FavoriteRestaurant
     Id_restaurant INTEGER NOT NULL,
     CONSTRAINT PK_Favorite PRIMARY KEY (Id_user,Id_restaurant),
     FOREIGN KEY(Id_user) REFERENCES User (UserId),
-    FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId)
+    FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId) ON DELETE CASCADE
 );
 
 CREATE TABLE Driver
@@ -109,7 +110,7 @@ CREATE TABLE Order_row
     CONSTRAINT PK_Order PRIMARY KEY (OrderId),
     FOREIGN KEY(Id_user) REFERENCES User (UserId),
     FOREIGN KEY(Id_driver) REFERENCES Driver (DriverId),
-    FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId)
+    FOREIGN KEY(Id_restaurant) REFERENCES Restaurant (RestaurantId) ON DELETE CASCADE
 );
 
 CREATE TABLE Order_list

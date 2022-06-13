@@ -6,8 +6,8 @@
 
 $db = getDatabaseConnection();
 $dishes = getRestaurantDishes($db,intval($_POST['id']));
-echo '<table class="myTable">
-        <tr>
+echo '<table id="dishTable" name="dishesTable" class="myTable">
+        <tr >
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
@@ -17,7 +17,7 @@ echo '<table class="myTable">
         </tr>';
 if(count($dishes) > 0){
     foreach($dishes as $dish) {
-      echo "<tr data-id=" . $dish["id"] . ">
+      echo "<tr contenteditable=true data-id=" . $dish["id"] . ">
               <td>" . $dish["name"]. "</td>
               <td>" . $dish["description"] . "</td>
               <td>" . $dish["price"]. "</td>

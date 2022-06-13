@@ -8,7 +8,7 @@
   <body>
     <header>
       <h1><a href="index.php?id=1">BRZO</a></h1>
-      <form action="action_login.php" method="post" class="login">
+      <form action="actions/action_login.php" method="post" class="login">
         <input type="text" name="username" placeholder="username">
         <input type="password" name="password" placeholder="password">
         <a href="register.php">Register</a>
