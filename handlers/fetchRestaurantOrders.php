@@ -6,7 +6,7 @@
  require_once('database/user.class.php');
 
 $db = getDatabaseConnection();
-$orders = getRestaurantOrders($db,intval($_POST['id']));
+$orders = Restaurant::getRestaurantOrders($db,intval($_POST['id']));
 
 echo '<table class="myTable">
         <tr>
