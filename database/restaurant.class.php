@@ -82,6 +82,27 @@
   
       return $dishes;
     }
+    static function getRestaurantOrders(PDO $db, int $id) : array {
+      $stmt = $db->prepare('
+        SELECT OrderId, Id_user, Id_driver, State_order
+        FROM Order_row
+        WHERE Id_restaurant = ?
+      ');
+      $stmt->execute(array($id));
+  
+      $orders = array();
+  
+      while ($order = $stmt->fetch()) {
+        $orders[] = array(
+          'id' => $order['OrderId'], 
+          'userId' => $order['Id_user'],
+          'driverId' => $order['Id_driver'],
+          'state' => $order['State_order'],
+        );
+      }
+  
+      return $orders;
+    }
 
 
     static function addRestaurant(PDO $db, string $name, string $picture, string $address, string $category, int $ownerId){

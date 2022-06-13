@@ -1,6 +1,6 @@
 <?php
   declare(strict_types = 1);
-
+  require_once('database/dish.class.php');
   class Dish{
 
     public int $id;
@@ -25,7 +25,7 @@
 
     }
 
-    public function getRestaurantDishes(PDO $db, int $id) : array {
+    static function getRestaurantDishes(PDO $db, int $id) : array {
       $stmt = $db->prepare('
         SELECT DishId, Name, Description, Price, Category, Picture, Promotion
         FROM Dish 
@@ -44,7 +44,8 @@
           floatval($dish['Price']),
           $dish['Category'],
           $dish['Picture'],
-          intval($dish['Promotion'])
+          intval($dish['Promotion']),
+          $id,
         );
       }
   

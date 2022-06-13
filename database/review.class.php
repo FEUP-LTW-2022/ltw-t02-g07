@@ -7,19 +7,24 @@
     public float $score;
     public string $description;
     public string $picture;
+    public int $userId;
+    public string $response;
 
-    public function __construct(int $id, float $score, string $description, string $picture){
+    public function __construct(int $id, float $score, string $description, string $picture, int $userId, string $response){
 
       $this-> id = $id;
       $this-> score = $score;
       $this-> description = $description;
       $this-> picture = $picture;
+      $this-> userId = $userId;
+      $this-> response = $response;
+
 
     }
 
     static function getRestaurantReviews(PDO $db, int $id) : array {
       $stmt = $db->prepare('
-        SELECT ReviewId, Score, Description, Picture
+        SELECT ReviewId, Score, Description, Picture, Id_user, Response
         FROM Review
         WHERE Id_restaurant = ?
         GROUP BY ReviewId
@@ -33,7 +38,9 @@
           intval($review['ReviewId']), 
           floatval($review['Score']),
           $review['Description'],
-          $review['Picture']
+          $review['Picture'],
+          $review['Id_user'],
+          is_null($review['Response']) ? "" : $review['Response'],
         );
       }
   

@@ -2,10 +2,10 @@
  declare(strict_types = 1);
  session_start();
  require_once('database/connection.db.php');
- require_once('database/restaurant.class.php');
+ require_once('database/dish.class.php');
 
 $db = getDatabaseConnection();
-$dishes = getRestaurantDishes($db,intval($_POST['id']));
+$dishes = Dish::getRestaurantDishes($db,intval($_POST['id']));
 echo '<table id="dishTable" name="dishesTable" class="myTable">
         <tr >
             <th>Name</th>
@@ -17,13 +17,13 @@ echo '<table id="dishTable" name="dishesTable" class="myTable">
         </tr>';
 if(count($dishes) > 0){
     foreach($dishes as $dish) {
-      echo "<tr contenteditable=true data-id=" . $dish["id"] . ">
-              <td>" . $dish["name"]. "</td>
-              <td>" . $dish["description"] . "</td>
-              <td>" . $dish["price"]. "</td>
-              <td>" . $dish["category"] ."</td>
-              <td>" . $dish["picture"] ."</td>
-              <td>" . $dish["promotion"] ."</td>
+      echo "<tr contenteditable=true data-id=" . $dish->id . ">
+              <td>" . $dish->name. "</td>
+              <td>" . $dish->description . "</td>
+              <td>" . $dish->price. "</td>
+              <td>" . $dish->category ."</td>
+              <td>" . $dish->picture ."</td>
+              <td>" . $dish->promotion ."</td>
             </tr>";
     }
   }
