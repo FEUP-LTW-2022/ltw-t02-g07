@@ -13,7 +13,7 @@
 
 
   $restaurant = Restaurant::getRestaurant($db, intval($_GET['id']));
-  $dishes = Restaurant::getRestaurantDishes($db, intval($_GET['id']));
+  $dishes = Dish::getRestaurantDishes($db, intval($_GET['id']));
   $reviews = Review::getRestaurantReviews($db, intval($_GET['id']));
   $score = Review::getRestaurantScore($db, intval($_GET['id']));
 

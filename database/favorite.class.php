@@ -10,7 +10,7 @@
 
     static function getFavoriteDishes(PDO $db, int $id) : array {
       $stmt = $db->prepare('
-      SELECT Name, Description, Price, Category, Picture, Promotion
+      SELECT Name, Description, Price, Category, Picture, Promotion, Id_restaurant
       FROM Favorite JOIN Dish 
       ON Id_dish = DishId
       WHERE Id_user = ?
@@ -27,7 +27,9 @@
           floatval($dish['Price']),
           $dish['Category'],
           $dish['Picture'],
-          intval($dish['Promotion'])
+          intval($dish['Promotion']),
+          intval($dish['Id_restaurant'])
+
         );
       }
   

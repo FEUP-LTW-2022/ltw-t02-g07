@@ -1,6 +1,8 @@
 <?php declare(strict_types = 1); 
 
-  require_once('database/restaurant.class.php')
+  require_once('database/restaurant.class.php');
+  require_once('database/connection.db.php');
+
 ?>
 
 <!-- Draws all the restaurants -->
@@ -18,12 +20,11 @@
           <img src="../resources/restaurants/<?=$restaurant->picture?>" id="boxImage">
           <div id="boxDesc">
             <a id="RestaurantName" href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
-            <p>Category:<?=$restaurant->category?><p>
+            <p>Category: <?=$restaurant->category?><p>
+            <p>Address:<?=$restaurant->address?><p>
             <p>Rating: <?php 
-              require_once('database/connection.db.php');
-              require_once('database/restaurant.db.php');
               $db = getDatabaseConnection();
-              $rating = getRestaurantScore($db,$restaurant->id);
+              $rating = Restaurant::getRestaurantScore($db,$restaurant->id);
               if($rating == null){
                 echo '-';
               }else{

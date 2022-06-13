@@ -22,7 +22,7 @@
                   <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="favorite.php">Favorites</a></li>
-                    <li><a href="orders">Orders</a></li>
+                    <li><a href="order.php">Orders</a></li>
                     <?php 
                       if (isset($_SESSION['isOwner'])){
                         echo'<li><a href="manage.php">Manage</a></li>';
