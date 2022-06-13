@@ -1,6 +1,6 @@
 <?php
   declare(strict_types = 1);
-
+  session_start();
   require_once('database/connection.db.php');
   require_once('database/favorite.class.php');
 
@@ -9,9 +9,10 @@
 
   $db = getDatabaseConnection();
 
-  $favorite = Favorite::getFavoriteDishes($db, intval(($_SESSION['id'])));
+  $favoriteRestaurants = Favorite::getFavoriteRestaurants($db, 1);
+  $favoriteDishes = Favorite::getFavoriteDishes($db, intval(1));
 
   drawHeader();
-  drawFavorite($favorite);
+  drawFavorite($favoriteDishes, $favoriteRestaurants);
   drawFooter();
 ?>

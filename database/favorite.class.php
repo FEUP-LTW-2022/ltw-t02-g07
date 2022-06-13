@@ -1,6 +1,8 @@
 <?php
   declare(strict_types = 1);
   require_once('database/dish.class.php');
+  require_once('database/restaurant.class.php');
+
 
   class Favorite{
 
@@ -34,6 +36,32 @@
       }
   
       return $dishes;
+    }
+
+    static function getFavoriteRestaurants(PDO $db, int $id) : array {
+      $stmt = $db->prepare('
+      SELECT RestaurantId, Name, Address, Picture, Category, Id_owner
+      FROM FavoriteRestaurant JOIN Restaurant
+      ON Id_restaurant = RestaurantId
+      WHERE Id_user = ?
+      ');
+      $stmt->execute(array($id));
+  
+      $restaurants = array();
+  
+      while ($restaurant = $stmt->fetch()) {
+        $restaurants[] = new Restaurant(
+          intval($restaurant['RestaurantId']), 
+          $restaurant['Name'],
+          $restaurant['Address'],
+          $restaurant['Picture'],
+          $restaurant['Category'],
+          intval($restaurant['Id_owner'])
+
+        );
+      }
+  
+      return $restaurants;
     }
   }
 
