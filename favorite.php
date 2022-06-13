@@ -9,7 +9,7 @@
 
   $db = getDatabaseConnection();
 
-  $favorite = Favorite::getFavoriteDishes($db, 1);
+  $favorite = Favorite::getFavoriteDishes($db, intval(($_SESSION['id'])));
 
   drawHeader();
   drawFavorite($favorite);
