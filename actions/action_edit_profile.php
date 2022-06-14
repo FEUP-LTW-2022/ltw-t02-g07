@@ -25,5 +25,5 @@
     $user->save($db);
   }
 
-  header('Location: profile.php');
+  header('Location: /../profile.php');
 ?>
