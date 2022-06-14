@@ -12,7 +12,7 @@ require_once('database/order.class.php')
   <section id="orders">
     <?php foreach ($orders as $order) { ?>
     <article>
-      <p>Number: <a href="orderDetail.php?id=<?=$order->id?>"><?=$order->id?></a></p>
+      <p>Number: <a href="orderDetail.php?id=<?=$order->id?>&status=<?=$order->status?>"><?=$order->id?></a></p>
       <p class="info">Status: <?=$order->status?></p> 
     </article>
     <?php } ?>
@@ -21,8 +21,9 @@ require_once('database/order.class.php')
 
 
 
-<?php function drawOrder(array $dishes, int $id) { ?>
+<?php function drawOrder(array $dishes, int $id, string $status) { ?>
   <h2>Order <?=$id?></h2>
+  <h1>Status: <?=$status?></h1>
   <section id="dishes">
     <?php foreach ($dishes as $dish) { ?>
     <article>
@@ -31,5 +32,23 @@ require_once('database/order.class.php')
     </article>
     <?php } ?>
   </section>
+    <div>
+      <form action="actions/action_add_review.php" method="post" id="reviewInput">
+      <input name = "restaurantId" id="restaurantId" type="hidden" value="<?$dishes[0]->restaurantId?>">
+      <label for="score">Score:</label>
+      <input class="reviewInput" type="range" id="score" name="score" oninput = "showScore(this.value)" onchange="showScore(this.value)"
+         min="0" max="5" value="2.5" step="0.1">
+      <label id="scoreValue" for="score">2.5★</label>
+      <p><label for="reviewText">Review:</label></p>
+        <textarea  form="reviewInput" class="reviewInput" id="reviewText" name="reviewText" rows="4" cols="50" maxlength="99"></textarea>
+      <input class="reviewInput" type="submit">
+    </form>
+    </div>
+
+    <script>
+      function showScore(value){
+        document.getElementById("scoreValue").innerHTML = value + "★";
+      }
+      </script>
 <?php } ?>
 

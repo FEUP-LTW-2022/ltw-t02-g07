@@ -9,8 +9,9 @@
     public string $picture;
     public int $userId;
     public string $response;
+    public int $restaurantId;
 
-    public function __construct(int $id, float $score, string $description, string $picture, int $userId, string $response){
+    public function __construct(int $id, float $score, string $description, string $picture, int $userId, string $response, int $restaurantId){
 
       $this-> id = $id;
       $this-> score = $score;
@@ -18,6 +19,7 @@
       $this-> picture = $picture;
       $this-> userId = $userId;
       $this-> response = $response;
+      $this-> restaurantId = $restaurantId;
 
 
     }
@@ -41,6 +43,7 @@
           $review['Picture'],
           intval($review['Id_user']),
           is_null($review['Response']) ? "" : $review['Response'],
+          $id,
         );
       }
   
@@ -61,6 +64,17 @@
         return $score['Score'];
 
   }
+
+  function addReview(PDO $db){
+    $stmt = $db->prepare('
+      INSERT INTO Review (Score, Description, Picture, Response, Id_restaurant, Id_user) VALUES (?,?,?,?,?,?)
+    ');
+    $stmt->execute(array($this->score,$this->description,$this->picture,$this->response,$this->restaurantId,$this->userId));
+    return $db->lastInsertId();
+
+
+
+}
 
   }
 ?>

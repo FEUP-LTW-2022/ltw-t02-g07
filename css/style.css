@@ -36,8 +36,14 @@ h2 {
     margin: 2%;
     text-align: center;
 }
+h1 {
+    color: #383434;
+    font-size: 1rem;
+    margin: 2%;
+    text-align: center;
+}
 
-input {
+input:not(.reviewInput) {
     /*width: 80%;
     margin: 3%;*/
     font-size: 1em;
@@ -45,6 +51,10 @@ input {
     border: none;
     padding: 1%;
 
+}
+
+.reviewInput{
+    padding:0%;
 }
 
 button {

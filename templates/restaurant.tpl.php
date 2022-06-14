@@ -30,11 +30,14 @@
               <div class="columnName">
                 <a id="RestaurantName" href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
               </div>
-              <div class="columnHeart">
-                <div id="heart">
-                  <i class="fa-2xl"></i>
-                </div>
-              </div>
+              <?php
+              if(isset($_SESSION['id'])){
+                echo '<div class="columnHeart">
+                  <div id="heart">
+                    <i class="fa-2xl"></i>
+                  </div>
+                </div>';
+              }?>
             </div>
             <p id="Category"> Category: <?=$restaurant->category?><p>
             <p id="Score">Rating: <?php 
@@ -152,11 +155,14 @@
             <div class="columnName">
               <p id="nameInfo"><?=$dish->name?></p>
             </div>
-            <div class="columnHeart">
-              <div id="heart">
-                <i class="fa-2xl"></i>
-              </div>
-            </div>
+            <?php
+            if(isset($_SESSION['id'])){
+                echo '<div class="columnHeart">
+                  <div id="heart">
+                    <i class="fa-2xl"></i>
+                  </div>
+                </div>';
+              }?>
           </div>
           <p id="descInfo" class="info"><?=$dish->description?></p>
           <p id="priceInfo" class="info">€<?=$dish->price?></p>
@@ -182,6 +188,7 @@
     <div class="fix"></div>
   </section>
   <script>
+
       $(document).ready(function(){
        $("#searchInput").on("keyup",function(){
         var value = $(this).val().toLowerCase();
@@ -191,6 +198,7 @@
         });
       });
     });
+    
     $(function(){
       $.post("handlers/getFavoriteDishes.php",
                   function (data) {
