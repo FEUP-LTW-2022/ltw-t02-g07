@@ -24,8 +24,8 @@
 
     static function getOrderDishes(PDO $db, int $id) : array {
       $stmt = $db->prepare('
-      SELECT Name, Description, Price, Category, Picture, Promotion, Id_restaurant
-      FROM Order_list JOIN Dish 
+      SELECT DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant
+      FROM Order_list JOIN Dish
       ON Id_dish = DishId
       WHERE Id_order = ?
       ');
@@ -43,7 +43,6 @@
           $dish['Picture'],
           intval($dish['Promotion']),
           intval($dish['Id_restaurant'])
-
         );
       }
   

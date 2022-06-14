@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS Order_list;
 DROP TABLE IF EXISTS Order_row;
 DROP TABLE IF EXISTS Driver;
-DROP TABLE IF EXISTS Favorite;
+DROP TABLE IF EXISTS FavoriteDish;
 DROP TABLE IF EXISTS Review;
 DROP TABLE IF EXISTS Dish;
 DROP TABLE IF EXISTS Restaurant;
@@ -72,7 +72,7 @@ CREATE TABLE Review
     FOREIGN KEY(Id_user) REFERENCES User(UserId)
 );
 
-CREATE TABLE Favorite
+CREATE TABLE FavoriteDish
 (
     Id_user INTEGER NOT NULL,
     Id_dish INTEGER NOT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE Order_list
 
 
 INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (1, 'User1', 'email2@gmail.com','Password2', 'House2', '5678');
-INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (2, 'User1', 'email3@gmail.com','Password2', 'House2', '5678');
+INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (2, 'User2', 'email3@gmail.com','Password2', 'House2', '5678');
 
 
 INSERT INTO Owner (OwnerId) VALUES (1);
@@ -147,9 +147,9 @@ INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_use
 INSERT INTO Review (ReviewId, Score, Description, Picture, Id_restaurant, Id_user) VALUES (4, 1.0, 'Good sushi, the sauce was not great.', 'sushi.png', 4, 1);
 
 
-INSERT INTO Favorite (Id_user, Id_dish) VALUES (1, 1);
-INSERT INTO Favorite (Id_user, Id_dish) VALUES (2, 3);
-INSERT INTO Favorite (Id_user, Id_dish) VALUES (2, 4);
+INSERT INTO FavoriteDish (Id_user, Id_dish) VALUES (1, 1);
+INSERT INTO FavoriteDish (Id_user, Id_dish) VALUES (2, 3);
+INSERT INTO FavoriteDish (Id_user, Id_dish) VALUES (2, 4);
 
 INSERT INTO FavoriteRestaurant (Id_user, Id_restaurant) VALUES (1, 1);
 INSERT INTO FavoriteRestaurant (Id_user, Id_restaurant) VALUES (2, 2);

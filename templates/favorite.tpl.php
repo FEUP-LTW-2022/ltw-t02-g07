@@ -18,7 +18,6 @@
         <div id="boxDesc">
           <p><?=$restaurant->name?></p>
           <p class="info">Category: <?=$restaurant->category?></p>
-          <p class="info"><?=$restaurant->description?></p>
           <p class="info">Address: <?=$restaurant->address?></p>
         </div>
       </article>

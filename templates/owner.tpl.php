@@ -49,7 +49,7 @@
               ?>
               </tbody>
             </table>
-            <form id="addForm">
+            <form autocomplete = "off" id="addForm">
               <input type="text" name="name" id="name" placeholder="name*">
               <input type="text" name="picture" id="picture" placeholder = "picture">
               <input type="text" name="address" id="address" placeholder ="address*">

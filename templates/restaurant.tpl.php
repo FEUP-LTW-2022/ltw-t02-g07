@@ -24,7 +24,16 @@
         <article id="optionBox" class="filterable" data-id=<?=$restaurant->id?>>
           <img src="../resources/restaurants/<?=$restaurant->picture?>" id="boxImage">
           <div id="boxDesc">
-            <a id="RestaurantName" href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
+            <div class="row">
+            <div class="columnName">
+              <a id="RestaurantName" href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
+             </div>
+            <div class="columnHeart">
+              <div id="heart">
+                <i class="fa-2xl"></i>
+              </div>
+            </div>
+          </div>
             <p>Category: <?=$restaurant->category?><p>
             <p id="Score">Rating: <?php 
               $db = getDatabaseConnection();
@@ -45,13 +54,45 @@
     </div>
   </section>
   <script>
+
+    $(function(){
+      $.post("handlers/getFavoriteRestaurants.php",
+                  function (data) {
+                    
+                    $("i").closest("#optionBox").each(function(){
+                          if(data.includes(this.dataset.id)){
+                            $(this).find("i").addClass("press");
+                          }
+                          
+                      });
+                    });
+                  });
+
+    $(function() {
+        $( "i" ).click(function() {
+          $(this).toggleClass( "press", 1000 );
+          if($(this).hasClass("press")){
+            $.post("handlers/addFavoriteRestaurant.php",
+                    {restaurantId:$(this).closest("#optionBox")[0].dataset.id},
+                    function(data){
+                      console.log("Favorite restaurant added");
+                    });
+            }else{
+              $.post("handlers/deleteFavoriteRestaurant.php",
+                    {restaurantId:$(this).closest("#optionBox")[0].dataset.id},
+                    function(data){
+                      console.log("Favorite restaurant delete");
+                    });
+            }
+        });
+      });
       //search by name filter
       $(document).ready(function(){
        $("#searchInput").on("keyup",function(){
         var value = $(this).val().toLowerCase();
         $(".filterable").filter(function(){
-          console.log($(this).children("#boxDesc").text());
-          $(this).toggle($(this).children("#boxDesc").children("#RestaurantName").text().toLowerCase().indexOf(value) > -1);
+          console.log($(this).children("#boxDesc").find("#RestaurantName").text());
+          $(this).toggle($(this).children("#boxDesc").find("#RestaurantName").text().toLowerCase().indexOf(value) > -1);
         });
       });
     });

@@ -1,6 +1,7 @@
 <?php
  declare(strict_types = 1);
  session_start();
+ echo 'heere';
  require_once('database/connection.db.php');
  require_once('database/restaurant.class.php');
 /*
@@ -11,7 +12,7 @@
 // POST Data
 
 $db = getDatabaseConnection();
-$id = addRestaurant(
+$id = Restaurant::addRestaurant(
             $db,
             $_POST['name'],
             $_POST['picture'],

@@ -11,6 +11,7 @@
             <title>BRZO</title>
             <meta charset="utf-8">
             <link rel="stylesheet" href="css/style.css">
+            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         </head>
         <body>
@@ -21,13 +22,13 @@
                 <nav id="navbar">
                   <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="favorite.php">Favorites</a></li>
-                    <li><a href="order.php">Orders</a></li>
                     <?php 
                       if (isset($_SESSION['isOwner'])){
                         echo'<li><a href="manage.php">Manage</a></li>';
                       }
                       if (isset($_SESSION['id'])) {
+                        echo'<li><a href="favorite.php">Favorites</a></li>';
+                        echo'<li><a href="order.php">Orders</a></li>';
                         echo'<li><a href="actions/action_logout.php">Logout</a></li>';
                         echo'<li><a href="profile.php">Profile</a></li>';
                       }
@@ -56,8 +57,8 @@
 <?php function drawLoginForm() { ?>
   <form action="actions/action_login.php" method="post" class="login">
     <div class="loginBox">
-      <input type="email" name="email" placeholder="email" class="inputInfo">
-      <input type="password" name="password" placeholder="password" class="inputInfo">
+      <input type="email" name="email" placeholder="email" class="input">
+      <input type="password" name="password" placeholder="password" class="input">
       <a href="register.php">Register</a>
       <button type="submit" class="bttn">Login</button>
     </div>

@@ -5,8 +5,8 @@
 
   require_once('templates/common.tpl.php');
   require_once('templates/favorite.tpl.php');
-  
   session_start();
+  if (!isset($_SESSION['id'])) die(header('Location: /'));
 
 
   $db = getDatabaseConnection();

@@ -12,8 +12,8 @@
 
     static function getFavoriteDishes(PDO $db, int $id) : array {
       $stmt = $db->prepare('
-      SELECT Name, Description, Price, Category, Picture, Promotion, Id_restaurant
-      FROM Favorite JOIN Dish 
+      SELECT DishId, Name, Description, Price, Category, Picture, Promotion, Id_restaurant
+      FROM FavoriteDish JOIN Dish 
       ON Id_dish = DishId
       WHERE Id_user = ?
       ');
@@ -63,7 +63,25 @@
   
       return $restaurants;
     }
+    static function addFavoriteRestaurant(PDO $db, int $id, int $id_restaurant){
+      $stmt = $db->prepare('
+          INSERT INTO FavoriteRestaurant (Id_user,Id_restaurant) VALUES (?,?)
+      ');
+      $stmt->execute(array($id,$id_restaurant));
   }
+  static function deleteFavoriteRestaurant($db, int $id, int $id_restaurant){
+    $stmt = $db->prepare('
+        DELETE FROM FavoriteRestaurant
+        WHERE Id_user = ? AND Id_restaurant = ?
+    ');
+    $stmt->execute(array($id,$id_restaurant));
+}
+  static function addFavoriteDish(PDO $db, int $id, int $id_dish){
+    $stmt = $db->prepare('
+        INSERT INTO FavoriteDish (Id_user,Id_dish) VALUES (?,?)
+    ');
+    $stmt->execute(array($id,$id_dish));
+}
 
-
+  }
 ?>
