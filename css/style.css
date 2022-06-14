@@ -346,19 +346,17 @@ background-color: #78c4d7;
 
 
 
-/* --Login and Register-- */
+/* --Login, Register, Profile-- */
 
-/* for both*/
-.log {
-    /*background-image: url(../images/bg.jpg);*/
+/* for all*/
+.blueBg {
     background-color: #78c4d7;
-    /*background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;*/
-    padding: 7% 0;
+    padding: 3%;
+    min-height: 100vh;
+    width: 100%;
 }
 
-.loginBox {
+.informBox {
     width: 30%;
     min-height: fit-content;
     margin: 1%;
@@ -372,7 +370,7 @@ background-color: #78c4d7;
     box-shadow: 16px 22px 51px -24px #464343;
 }
 
-.loginBox input {
+.informBox input {
     width: 80%;
     margin: 3% 10%;
     font-size: 1em;
@@ -383,7 +381,7 @@ background-color: #78c4d7;
     margin: 5% 2%;
 }
 
-.loginBox a {
+.informBox a {
     margin-left: 30%;
 }
 
@@ -392,9 +390,15 @@ background-color: #78c4d7;
     margin-left: 35%;
 }
 
-.loginBox label {
+.informBox label {
     margin-left: 9%;
     margin-top: 5%;
+}
+
+/*Profile*/
+.profile button {
+    margin-left: 40%;
+    margin-top: 10%;
 }
 
 
@@ -475,7 +479,7 @@ footer {
 
 
 
-@media only screen and (max-width:678px){ 
+@media only screen and (max-width:768px){ 
 
     header {
         margin: 0 auto;
@@ -520,29 +524,25 @@ footer {
     
 
     /* Login and register */
-    .log {
-        background-color: #78c4d7;
-        padding: 7% 0%;
-        
-    }
-    .loginBox {
+
+    .informBox {
         width: 90%;
         margin: 20% 5%;
         padding: 5% 1%;
     }
     
-    .loginBox input {
+    .informBox input {
         width: 90%;
         margin: 3% 5%;
         font-size: 1em;
     }
 
-    .loginBox select {
+    .informBox select {
         margin: 5% 20%;
         width: 60%;
     }
 
-    .loginBox label {
+    .informBox label {
         margin-left: 20%;
         margin-top: 5%;
         width: 25%;
@@ -555,6 +555,10 @@ footer {
     #reg-bttn {
         margin-left: 35%;
         width: 30%;
+    }
+
+    .profile label {
+        margin-left: 5%;
     }
 
 

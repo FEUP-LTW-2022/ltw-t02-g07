@@ -58,8 +58,8 @@
 
 
 <?php function drawLoginForm() { ?>
-  <form action="actions/action_login.php" method="post" class="login log">
-    <div class="loginBox">
+  <form action="actions/action_login.php" method="post" class="login blueBg">
+    <div class="informBox">
       <input type="email" name="email" placeholder="email" class="input">
       <input type="password" name="password" placeholder="password" class="input">
       <a href="register.php">Register</a>
@@ -70,8 +70,8 @@
 <?php } ?>
 
 <?php function drawRegistrationForm() { ?>
-  <form action="actions/action_register.php" method="post" class="register log">
-    <div class="loginBox">
+  <form action="actions/action_register.php" method="post" class="register blueBg">
+    <div class="informBox">
       <input type="email" name="email" placeholder="email">
       <input type="name" name="name" placeholder="name">
       <input type="password" name="password" placeholder="password">
