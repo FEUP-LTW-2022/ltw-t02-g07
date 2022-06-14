@@ -50,13 +50,14 @@
               </tbody>
             </table>
             <form autocomplete = "off" id="addForm">
+            <button id="deleteRestaurant" onclick = "deleteRestaurant()">Delete highlighted restaurant</button>
+            <form id="addForm">
               <input type="text" name="name" id="name" placeholder="name*">
               <input type="text" name="picture" id="picture" placeholder = "picture">
               <input type="text" name="address" id="address" placeholder ="address*">
               <input type="text" name="category" id="category" placeholder ="category*">
               <button id="submit">Add restaurant</button>
             </form>
-            <button id="deleteRestaurant" onclick = "deleteRestaurant()">Delete highlighted restaurant</button>
           </div>
           <div class="column">
             <div class="tab">
@@ -77,14 +78,14 @@
             <p> Click on a restaurant to show info </p>
             </div>
             <form id="addDishForm" class="dishForm">
-          <input type="text" name="nameDish" id="nameDish" placeholder="name*">
-          <input type="text" name="descriptionDish" id="descriptionDish" placeholder = "description*">
-          <input type="number" name="priceDish" id="priceDish" placeholder ="price*">
-          <input type="text" name="categoryDish" id="categoryDish" placeholder ="category*">
-          <input type="text" name="pictureDish" id="pictureDish" placeholder ="picture">
-          <input type="number" name="promotionDish" id="promotionDish" placeholder ="promotion">
-        </form>
-        <button id="submitDish">Add dish</button>
+              <input type="text" name="nameDish" id="nameDish" placeholder="name*">
+              <input type="text" name="descriptionDish" id="descriptionDish" placeholder = "description*">
+              <input type="number" name="priceDish" id="priceDish" placeholder ="price*">
+              <input type="text" name="categoryDish" id="categoryDish" placeholder ="category*">
+              <input type="text" name="pictureDish" id="pictureDish" placeholder ="picture">
+              <input type="number" name="promotionDish" id="promotionDish" placeholder ="promotion">
+            </form>
+            <button id="submitDish">Add dish</button>
           </div>
         </div>
         <script>

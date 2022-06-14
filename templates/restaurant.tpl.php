@@ -8,20 +8,21 @@
 <!-- Draws all the restaurants -->
 
 <?php function drawRestaurants(array $restaurants) { ?>
+  
+  <div id="searchDiv">
+    <input id="searchInput" type="search" placeholder="Name..." class="form-control">
+    <select name="orders" id="orderInput" onchange="stateChange()" class="drop">
+      <option value="" selected disabled hidden>Score</option>
+      <option value="ascending">Low to High</option>
+      <option value="descending">High to Low</option>
+    </select>
+  </div>
+
+  <h2>Restaurants</h2>
   <section id="restaurants">
-    <div id="part">
-      <h2>Restaurants</h2>
-      <div id="searchDiv">
-        <input id="searchInput" type="search" placeholder="Name..." class="form-control">
-        <select name="orders" id="orderInput" onchange="stateChange()">
-          <option value="" selected disabled hidden>Score</option>
-          <option value="ascending">Low to High</option>
-          <option value="descending">High to Low</option>
-        </select>
-      </div>
-      <div id = "restaurantContainer">
+    <div class="part">
       <?php foreach($restaurants as $restaurant) { ?> 
-        <article id="optionBox" class="filterable" data-id=<?=$restaurant->id?>>
+        <article id="optionBox" class="filterable optionBox" data-id=<?=$restaurant->id?>>
           <img src="../resources/restaurants/<?=$restaurant->picture?>" id="boxImage">
           <div id="boxDesc">
             <div class="row">
@@ -49,8 +50,7 @@
           </div>
         </article>
       <?php } ?>
-      </div>
-      <div id="fix"></div>
+      <div class="fix"></div>
     </div>
   </section>
   <script>
@@ -127,33 +127,34 @@
 
 <?php function drawRestaurant(Restaurant $restaurant, array $dishes, array $reviews, string $score) { ?>
   <section id="dishes">
-    <div id="part">
+    <div class="part">
       <h2><?=$restaurant->name?> <?=$score?>★</h2>
       <?php foreach ($dishes as $dish) { ?>
-      <article id="optionBox">
-        <img src="../resources/dishes/<?=$dish->picture?>" id="boxImage">
-        <div id="boxDesc">
+      <article class="optionBox">
+        <img src="../resources/dishes/<?=$dish->picture?>" class="boxImage">
+        <div class="boxDesc">
           <p><?=$dish->name?></p>
           <p class="info"><?=$dish->description?></p>
           <p class="info">€<?=$dish->price?></p>
         </div>
       </article>
       <?php } ?>
-      <div id="fix"></div>
+      <div class="fix"></div>
     </div>
   </section>
 
   <section id="reviews">
-    <div id="part">
-      <?php foreach ($reviews as $review) { ?>
-        <img src="../resources/reviews/<?=$review->picture?>">
-        <div>
-          <p class="info"><?=$review->description?></p>
-          <p class="info"><?=$review->score?>★</p>
-        </div>
-      <?php } ?>
-      <div id="fix"></div>
+    <h2>Reviews</h2>
+    <div class="reviewBox">
+    <?php foreach ($reviews as $review) { ?>
+      <img src="../resources/reviews/<?=$review->picture?>" class="boxImage sharp">
+      <div class="revDesc">
+        <p class="info"><?=$review->description?></p>
+        <p class="info"><?=$review->score?>★</p>
+      </div>
+    <?php } ?>
     </div>
+    <div class="fix"></div>
   </section>
 <?php } ?>
 
