@@ -18,7 +18,7 @@
                 <img src="images/logo.png" alt="Restaurant Logo" id="logo">
                 <h1><a href="index.php">BRZO</a></h1>
                 <!--<?php drawLoginForm() ?> -->
-                <nav id="navbar">
+                <nav class="navbar">
                   <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="favorite.php">Favorites</a></li>
@@ -36,7 +36,7 @@
                   </ul>
                 </nav>
             </header>
-            <div id="fix"></div>
+            <div class="fix"></div>
             <main>
         <?php } ?>
 
@@ -54,29 +54,32 @@
 
 
 <?php function drawLoginForm() { ?>
-  <form action="actions/action_login.php" method="post" class="login">
+  <form action="actions/action_login.php" method="post" class="login log">
     <div class="loginBox">
       <input type="email" name="email" placeholder="email" class="inputInfo">
       <input type="password" name="password" placeholder="password" class="inputInfo">
       <a href="register.php">Register</a>
-      <button type="submit" class="bttn">Login</button>
+      <button type="submit" id="log-bttn">Login</button>
     </div>
-    <div id="fix"></div>
+    <div class="fix"></div>
   </form>
 <?php } ?>
 
 <?php function drawRegistrationForm() { ?>
-  <form action="actions/action_register.php" method="post" class="register">
-    <input type="email" name="email" placeholder="email">
-    <input type="name" name="name" placeholder="name">
-    <input type="password" name="password" placeholder="password">
-    <label for="role">Choose a account type:</label>
-    <select id="role" name="role">
-      <option value="customer">Customer</option>
-      <option value="owner">Owner</option>
-      <option value="driver">Driver</option>
-    </select>
-    <button type="submit">Register</button>
+  <form action="actions/action_register.php" method="post" class="register log">
+    <div class="loginBox">
+      <input type="email" name="email" placeholder="email">
+      <input type="name" name="name" placeholder="name">
+      <input type="password" name="password" placeholder="password">
+      <label for="role">Choose a account type:</label>
+      <select id="role" name="role">
+        <option value="customer">Customer</option>
+        <option value="owner">Owner</option>
+        <option value="driver">Driver</option>
+      </select>
+      <button type="submit" id="reg-bttn">Register</button>
+    </div>
+    <div class="fix"></div>
   </form>
 <?php } ?>
 
