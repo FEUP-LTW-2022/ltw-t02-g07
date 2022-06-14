@@ -39,10 +39,10 @@
               if(count($restaurants) > 0){
                 foreach($restaurants as $restaurant) {
                   echo "<tr contenteditable=true data-id=" . $restaurant["id"] . ">
-                          <td>" . $restaurant["name"]. "</td>
-                          <td>" . $restaurant["picture"] . "</td>
-                          <td>" . $restaurant["address"]. "</td>
-                          <td>" . $restaurant["category"] ."</td>
+                          <td>" . htmlspecialchars($restaurant["name"]). "</td>
+                          <td>" . htmlspecialchars($restaurant["picture"]) . "</td>
+                          <td>" . htmlspecialchars($restaurant["address"]). "</td>
+                          <td>" . htmlspecialchars($restaurant["category"]) ."</td>
                         </tr>";
                 }
               } else { echo "0 results"; }

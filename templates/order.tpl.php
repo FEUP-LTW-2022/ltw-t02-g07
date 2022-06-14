@@ -38,6 +38,7 @@ require_once(__DIR__ . '/../database/order.class.php')
     <div>
       <form action="actions/action_add_review.php" method="post" id="reviewInput">
       <input name = "restaurantId" id="restaurantId" type="hidden" value="<?$dishes[0]->restaurantId?>">
+      <input name = "csrf" id="csrf" type = "hidden" value = "<?=$_SESSION['csrf']?>">
       <label for="score">Score:</label>
       <input class="reviewInput" type="range" id="score" name="score" oninput = "showScore(this.value)" onchange="showScore(this.value)"
          min="0" max="5" value="2.5" step="0.1">

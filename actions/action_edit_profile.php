@@ -5,6 +5,10 @@
 
   if (!isset($_SESSION['id'])) die(header('Location: /'));
 
+  if ($_SESSION['csrf'] !== $_POST['csrf']) {
+    echo '<script type="text/javascript">alert("csrf potentionally detected! logout and login if false");</script>';
+    exit;
+  }
   require_once(__DIR__ . '/../database/connection.db.php');
   require_once(__DIR__ . '/../database/user.class.php');
 
