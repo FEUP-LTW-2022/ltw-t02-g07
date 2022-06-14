@@ -58,8 +58,8 @@
 
 
 <?php function drawLoginForm() { ?>
-  <form action="actions/action_login.php" method="post" class="login log">
-    <div class="loginBox">
+  <form action="actions/action_login.php" method="post" class="login blueBg">
+    <div class="informBox">
       <input type="email" name="email" placeholder="email" class="input" required>
       <input type="password" name="password" placeholder="password" class="input" required>
       <a href="register.php">Register</a>
@@ -70,11 +70,11 @@
 <?php } ?>
 
 <?php function drawRegistrationForm() { ?>
-  <form id = "regForm" action="actions/action_register.php" method="post" class="register log">
-    <div class="loginBox">
+  <form id = "regForm" action="actions/action_register.php" method="post" class="register blueBg">
+    <div class="informBox">
       <input type="email" name="email" placeholder="email" required>
-      <input id="name" type="name" name="name" placeholder="name" required>
-      <input id="password" type="password" name="password" placeholder="password" required minlength = "6" maxlength="20">
+      <input type="name" name="name" placeholder="name" required>
+      <input type="password" name="password" placeholder="password" required minlength = "6" maxlength="20">
       <label for="role">Choose a account type:</label>
       <select id="role" name="role">
         <option value="customer">Customer</option>
