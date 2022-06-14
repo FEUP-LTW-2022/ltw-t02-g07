@@ -10,7 +10,7 @@
 <?php function drawRestaurants(array $restaurants) { ?>
   
   <div id="searchDiv">
-    <input id="searchInput" type="search" placeholder="Name..." class="form-control">
+    <input id="searchInput" type="search" placeholder="Search..." class="form-control">
     <select name="orders" id="orderInput" onchange="stateChange()" class="drop">
       <option value="" selected disabled hidden>Score</option>
       <option value="ascending">Low to High</option>
@@ -21,6 +21,7 @@
   <h2>Restaurants</h2>
   <section id="restaurants">
     <div class="part">
+      <div id="restaurantContainer">
       <?php foreach($restaurants as $restaurant) { ?> 
         <article id="optionBox" class="filterable optionBox" data-id=<?=$restaurant->id?>>
           <img src="../resources/restaurants/<?=$restaurant->picture?>" id="boxImage" class="boxImage">
@@ -35,7 +36,7 @@
               </div>
             </div>
           </div>
-            <p>Category: <?=$restaurant->category?><p>
+            <p id="Category"> Category: <?=$restaurant->category?><p>
             <p id="Score">Rating: <?php 
               $db = getDatabaseConnection();
               $rating = Restaurant::getRestaurantScore($db,$restaurant->id);
@@ -50,6 +51,7 @@
           </div>
         </article>
       <?php } ?>
+            </div>
       <div class="fix"></div>
     </div>
   </section>
@@ -68,31 +70,37 @@
                     });
                   });
 
-    $(function() {
-        $( "i" ).click(function() {
-          $(this).toggleClass( "press", 1000 );
-          if($(this).hasClass("press")){
-            $.post("handlers/addFavoriteRestaurant.php",
-                    {restaurantId:$(this).closest("#optionBox")[0].dataset.id},
-                    function(data){
-                      console.log("Favorite restaurant added");
-                    });
-            }else{
-              $.post("handlers/deleteFavoriteRestaurant.php",
-                    {restaurantId:$(this).closest("#optionBox")[0].dataset.id},
-                    function(data){
-                      console.log("Favorite restaurant delete");
-                    });
-            }
+
+    function addclick(){
+      $(function() {
+          $( "i" ).click(function() {
+            $(this).toggleClass( "press", 1000 );
+            if($(this).hasClass("press")){
+              $.post("handlers/addFavoriteRestaurant.php",
+                      {restaurantId:$(this).closest("#optionBox")[0].dataset.id},
+                      function(data){
+                        console.log("Favorite restaurant added");
+                      });
+              }else{
+                $.post("handlers/deleteFavoriteRestaurant.php",
+                      {restaurantId:$(this).closest("#optionBox")[0].dataset.id},
+                      function(data){
+                        console.log("Favorite restaurant delete");
+                      });
+              }
+          });
         });
-      });
+    }
+    addclick();
       //search by name filter
       $(document).ready(function(){
        $("#searchInput").on("keyup",function(){
         var value = $(this).val().toLowerCase();
         $(".filterable").filter(function(){
           console.log($(this).children("#boxDesc").find("#RestaurantName").text());
-          $(this).toggle($(this).children("#boxDesc").find("#RestaurantName").text().toLowerCase().indexOf(value) > -1);
+          var nameSearch = $(this).children("#boxDesc").find("#RestaurantName").text().toLowerCase().indexOf(value) > -1;
+          var categorySearch = $(this).children("#boxDesc").find("#Category").text().toLowerCase().indexOf(value) > -1;
+          $(this).toggle(nameSearch || categorySearch);
         });
       });
     });
@@ -100,21 +108,20 @@
     function stateChange(){
             var select = document.getElementById("orderInput");
             var sorted_divs = getSorted('.filterable',select.value).clone();
-        
+            console.log(sorted_divs);
             $("#restaurantContainer").html(sorted_divs);
+            addclick();
 
 
 
           }
       function getSorted(selector, orientation) {
         return $($(selector).toArray().sort(function(a, b){
-          var aVal = parseFloat($(a).children("#boxDesc").children("#Score").text().split(":")[1]),
-          bVal = parseFloat($(b).children("#boxDesc").children("#Score").text().split(":")[1]);
+          var aVal = parseFloat($(a).children("#boxDesc").find("#Score").text().split(":")[1]),
+          bVal = parseFloat($(b).children("#boxDesc").find("#Score").text().split(":")[1]);
           if(orientation === "ascending"){
-            console.log("tusom");
             return aVal - bVal;
           }else{
-            console.log("somtu");
             return bVal - aVal;
           }
     }));
