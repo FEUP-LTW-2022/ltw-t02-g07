@@ -27,12 +27,13 @@ h2 {
     margin: 2%;
     text-align: center;
 }
+/*
 h1 {
     color: #383434;
     font-size: 1rem;
     margin: 2%;
     text-align: center;
-}
+}*/
 
 input:not(.reviewInput) {
     /*width: 80%;
@@ -99,7 +100,7 @@ select{
 h1 > a{    
     color: #383434;
     float: left;
-    margin-top: 0.5%;
+    margin-top: 1%;
 }
 
 header {
@@ -474,13 +475,24 @@ footer {
 
 
 
-@media only screen and (max-width:540px){ 
+@media only screen and (max-width:678px){ 
+
+    header {
+        margin: 0 auto;
+        padding: 1%;
+        max-height:fit-content;
+    }
 
     #logo {
         align-content: right;
         height: 10%;
         width: 10%;
         float: left;   
+    }
+
+    .navbox {
+        display: block;
+        width: 80%;
     }
 
     /* search and select */
