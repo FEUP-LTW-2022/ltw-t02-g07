@@ -274,7 +274,6 @@ border: 1px solid #78c4d7;
 background-color: #78c4d7;
 }
 
-
 #addForm input {
     margin: 1% 5%;
     width: 90%;
@@ -294,13 +293,10 @@ background-color: #78c4d7;
     margin-top: 2%;
     margin-bottom: 5%;
     margin-right: 30%;
-
 }
 
 /* Style the buttons inside the tab */
-
 .tab button {
-
     background-color: inherit;
     float: left;
     border: none;
@@ -310,22 +306,21 @@ background-color: #78c4d7;
     transition: 0.3s;
     font-size: 17px;
     margin: 0 0;
-    
-
 }
 
 /* Style the tab content */
 .tabcontent {
-display: none;
-padding: 6px 12px;
-border: 1px solid #ccc;
-border-top: none;
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
 }
 /* Create a two-column layout */
 .column {
-background-color: #d0e9f2be;
-float: left;
-width: 50%;
+    background-color: #d0e9f2be;
+    float: left;
+    width: 100%;
+    margin-bottom: 5%;
 }
 .columnName{
     float: left;
@@ -333,10 +328,10 @@ width: 50%;
     }
 
 /* Clearfix (clear floats) */
-.row::after {
-content: "";
-clear: both;
-display: table;
+    .row::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .dishForm {
