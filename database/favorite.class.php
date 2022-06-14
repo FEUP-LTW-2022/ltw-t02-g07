@@ -82,6 +82,13 @@
     ');
     $stmt->execute(array($id,$id_dish));
 }
+static function deleteFavoriteDish($db, int $id, int $id_dish){
+  $stmt = $db->prepare('
+      DELETE FROM FavoriteDish
+      WHERE Id_user = ? AND Id_dish = ?
+  ');
+  $stmt->execute(array($id,$id_dish));
+}
 
   }
 ?>

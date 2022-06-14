@@ -10,7 +10,12 @@
  
 // POST Data
 $db = getDatabaseConnection();
-Favorite::addFavoriteDish($db,intval($_SESSION['id']),intval($_POST['dishId']));
+$arr = Favorite::getFavoriteDishes($db,intval($_SESSION['id']),);
+$tmp = array();
+foreach($arr as $element){
+    $tmp[] = $element->id;
+}
+echo json_encode($tmp);
 
 exit;
  

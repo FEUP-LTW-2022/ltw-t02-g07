@@ -5,7 +5,7 @@
 
   if (!isset($_SESSION['isOwner'])) die(header('Location: /'));
 
-  require_once('database/connection.db.php');
+  require_once(__DIR__ . '/database/connection.db.php');
   require_once('database/owner.class.php');
 
   require_once('templates/common.tpl.php');

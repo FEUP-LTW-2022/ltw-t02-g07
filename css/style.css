@@ -65,7 +65,9 @@ button:hover {
 }
 
 a{
-    color: #ad172e;
+    font-size: large;
+    font-weight: bold;
+    color: #c93333;
     text-decoration: none;
 }
 
@@ -297,7 +299,7 @@ display: table;
 #searchDiv{
 
     text-align: center;
-    background-image: url(../images/bg.jpg);
+    /*background-image: url(../images/bg.jpg);*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

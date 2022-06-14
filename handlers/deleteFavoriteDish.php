@@ -10,7 +10,7 @@
  
 // POST Data
 $db = getDatabaseConnection();
-Favorite::addFavoriteDish($db,intval($_SESSION['id']),intval($_POST['dishId']));
+Favorite::deleteFavoriteDish($db,intval($_SESSION['id']),intval($_POST['dishId']));
 
 exit;
  
