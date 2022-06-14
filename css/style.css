@@ -6,6 +6,8 @@
 /* --ALL-- */
 
 /* remove margins and padding and set fonts */
+
+
 *{
     margin: 0 0;
     padding: 0 0;
@@ -125,7 +127,7 @@ header {
 /* -- Search and Score --*/
 
 #searchDiv{
-    text-align: center;
+    /*text-align: center;*/
     background-color: #78c4d7;
 }
 
@@ -468,5 +470,78 @@ footer {
 
 
 @media only screen and (max-width:540px){ 
+
+    #logo {
+        align-content: right;
+        height: 10%;
+        width: 10%;
+        float: left;   
+    }
+
+    /* search and select */
+    #searchDiv input {
+        width: 60%;
+        margin-left: 20%;
+        margin-top: 5%;
+    }
+
+    #searchDiv select {
+        width: 60%;
+        margin-left: 20%;
+    }
+
+
+    /* Menu of Restaurants and Dishes */
+    .optionBox {
+        width: 90%;
+        margin: 1% 5%;
+        padding: 5%;
+        float: left;
+        background-color: white;
+        border-radius: 13px;
+    }
+    
+
+    /* Login and register */
+    .log {
+        background-color: #78c4d7;
+        padding: 7% 0%;
+        
+    }
+    .loginBox {
+        width: 90%;
+        margin: 20% 5%;
+        padding: 5% 1%;
+    }
+    
+    .loginBox input {
+        width: 90%;
+        margin: 3% 5%;
+        font-size: 1em;
+    }
+
+    .loginBox select {
+        margin: 5% 20%;
+        width: 60%;
+    }
+
+    .loginBox label {
+        margin-left: 20%;
+        margin-top: 5%;
+        width: 25%;
+    }
+    #log-bttn {
+        margin: 5% 2%;
+        width: 25%;
+    }
+    
+    #reg-bttn {
+        margin-left: 35%;
+        width: 30%;
+    }
+
+
+    
+
 
 }
