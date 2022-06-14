@@ -69,6 +69,15 @@
         return null;
       }
     }
+    static function getUserPassword(PDO $db, int $id) : string {
+      $stmt = $db->prepare('
+        SELECT Password
+        FROM User 
+        WHERE UserId = ?
+      ');
+      $stmt->execute(array($id));
+      return $stmt->fetch()['Password'];
+    }
 
     static function getUser(PDO $db, int $id) : ?User {
       $stmt = $db->prepare('

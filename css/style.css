@@ -147,6 +147,13 @@ header {
     margin-left: 17%;
 }
 
+#strengthBadge {
+    border: solid 1px #555;
+    background-color: #eed;
+    box-shadow:  0 0 10px  rgba(0,0,0,0.6);
+    display: none;
+    text-align: center;
+}
 
 
 

@@ -60,8 +60,8 @@
 <?php function drawLoginForm() { ?>
   <form action="actions/action_login.php" method="post" class="login log">
     <div class="loginBox">
-      <input type="email" name="email" placeholder="email" class="input">
-      <input type="password" name="password" placeholder="password" class="input">
+      <input type="email" name="email" placeholder="email" class="input" required>
+      <input type="password" name="password" placeholder="password" class="input" required>
       <a href="register.php">Register</a>
       <button type="submit" id="log-bttn">Login</button>
     </div>
@@ -70,11 +70,11 @@
 <?php } ?>
 
 <?php function drawRegistrationForm() { ?>
-  <form action="actions/action_register.php" method="post" class="register log">
+  <form id = "regForm" action="actions/action_register.php" method="post" class="register log">
     <div class="loginBox">
-      <input type="email" name="email" placeholder="email">
-      <input type="name" name="name" placeholder="name">
-      <input type="password" name="password" placeholder="password">
+      <input type="email" name="email" placeholder="email" required>
+      <input id="name" type="name" name="name" placeholder="name" required>
+      <input id="password" type="password" name="password" placeholder="password" required minlength = "6" maxlength="20">
       <label for="role">Choose a account type:</label>
       <select id="role" name="role">
         <option value="customer">Customer</option>
@@ -82,9 +82,52 @@
         <option value="driver">Driver</option>
       </select>
       <button type="submit" id="reg-bttn">Register</button>
+      <div id="strengthBadge">
+</div>
     </div>
     <div class="fix"></div>
   </form>
+  <script>
+    let timeout;
+    const form = document.getElementById("regForm");
+    let password = document.getElementById('password');
+      let strengthBadge = document.getElementById('strengthBadge');
+      let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
+      let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))');
+
+      function StrengthChecker(PasswordParameter){
+        if(strongPassword.test(PasswordParameter)) {
+            strengthBadge.style.backgroundColor = "green"
+            strengthBadge.textContent = 'Strong'
+        } else if(mediumPassword.test(PasswordParameter)){
+            strengthBadge.style.backgroundColor = 'blue'
+            strengthBadge.textContent = 'Medium'
+        } else{
+            strengthBadge.style.backgroundColor = 'red'
+            strengthBadge.textContent = 'Weak'
+        }
+      }
+    password.addEventListener('input', (e)=>{
+        strengthBadge.style.display= 'block'
+        clearTimeout(timeout);
+
+        //We then call the StrengChecker function as a callback then pass the typed password to it
+
+        timeout = setTimeout(() => StrengthChecker(password.value), 500);
+
+        //Incase a user clears the text, the badge is hidden again
+
+        if(password.value.length !== 0){
+            strengthBadge.style.display != 'block'
+        } else{
+            strengthBadge.style.display = 'none'
+        }
+    });
+    form.addEventListener('submit', function(){
+      strengthBadge.textContent("")
+    })
+
+    </script>
 <?php } ?>
 
 

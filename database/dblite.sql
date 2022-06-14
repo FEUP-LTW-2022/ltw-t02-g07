@@ -18,7 +18,7 @@ CREATE TABLE User
     UserId INTEGER NOT NULL,
     Name NVARCHAR(30) NOT NULL,
     Email NVARCHAR(40) NOT NULL,
-    Password NVARCHAR(30) NOT NULL,
+    Password NVARCHAR(100) NOT NULL,
     Address NVARCHAR(30),
     PhoneNumber NVARCHAR(20),
     CONSTRAINT PK_User PRIMARY KEY (UserId)
@@ -95,7 +95,7 @@ CREATE TABLE Driver
     DriverId INTEGER,
     Name NVARCHAR(30) NOT NULL,
     Email NVARCHAR(40) NOT NULL,
-    Password NVARCHAR(30) NOT NULL,
+    Password NVARCHAR(100) NOT NULL,
     PhoneNumber NVARCHAR(20), 
     CONSTRAINT PK_Driver PRIMARY KEY (DriverId)
 );

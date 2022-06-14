@@ -7,8 +7,9 @@
   require_once(__DIR__ . '/../database/user.class.php');
 
   $db = getDatabaseConnection();
+  $options = ['cost' => 12];
 
-  $succesful = User::addUser($db, $_POST['name'], $_POST['email'],$_POST['password']);
+  $succesful = User::addUser($db, strip_tags($_POST['name']), $_POST['email'],password_hash($_POST['password'],PASSWORD_DEFAULT,$options));
   $role = $_POST['role'];
 
   if($role == 'owner'){
