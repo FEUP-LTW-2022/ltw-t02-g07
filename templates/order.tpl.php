@@ -10,12 +10,15 @@ require_once('database/order.class.php')
 <?php function drawOrders(array $orders) { ?>
   <h2>Orders</h2>
   <section id="orders">
-    <?php foreach ($orders as $order) { ?>
-    <article>
-      <p>Number: <a href="orderDetail.php?id=<?=$order->id?>&status=<?=$order->status?>"><?=$order->id?></a></p>
-      <p class="info">Status: <?=$order->status?></p> 
-    </article>
-    <?php } ?>
+    <div class="part">
+      <?php foreach ($orders as $order) { ?>
+      <article class="optionBox">
+        <p>Number: <a href="orderDetail.php?id=<?=$order->id?>&status=<?=$order->status?>"><?=$order->id?></a></p>
+        <p class="info">Status: <?=$order->status?></p> 
+      </article>
+      <?php } ?>
+      <div class="fix"></div>
+      </div>
   </section>
 <?php } ?>
 

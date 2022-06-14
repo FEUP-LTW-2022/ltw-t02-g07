@@ -21,21 +21,23 @@
                 <h1><a href="index.php">BRZO</a></h1>
                 <!--<?php drawLoginForm() ?> -->
                 <nav class="navbar">
-                  <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <?php 
-                      if (isset($_SESSION['isOwner'])){
-                        echo'<li><a href="manage.php">Manage</a></li>';
-                      }
-                      if (isset($_SESSION['id'])) {
-                        echo'<li><a href="favorite.php">Favorites</a></li>';
-                        echo'<li><a href="order.php">Orders</a></li>';
-                        echo'<li><a href="actions/action_logout.php">Logout</a></li>';
-                        echo'<li><a href="profile.php">Profile</a></li>';
-                      }
-                      else echo'<li><a href="login.php">Login</a></li>';
-                    ?>
-                  </ul>
+                  <div class="navBox">
+                    <ul>
+                      <li><a href="index.php">Home</a></li>
+                      <?php 
+                        if (isset($_SESSION['isOwner'])){
+                          echo'<li><a href="manage.php">Manage</a></li>';
+                        }
+                        if (isset($_SESSION['id'])) {
+                          echo'<li><a href="favorite.php">Favorites</a></li>';
+                          echo'<li><a href="order.php">Orders</a></li>';
+                          echo'<li><a href="actions/action_logout.php">Logout</a></li>';
+                          echo'<li><a href="profile.php">Profile</a></li>';
+                        }
+                        else echo'<li><a href="login.php">Login</a></li>';
+                      ?>
+                    </ul>
+                  </div>
                 </nav>
             </header>
             <div class="fix"></div>

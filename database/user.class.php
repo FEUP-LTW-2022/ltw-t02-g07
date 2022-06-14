@@ -85,7 +85,7 @@
           }
       
         return new User(
-            $User['UserId'],
+            intval($User['UserId']),
             $User['Name'],
             $User['Address'],
             $User['PhoneNumber'],
@@ -110,7 +110,7 @@
               }
         
           return new User(
-              $User['UserId'],
+              intval($User['UserId']),
               $User['Name'],
               $User['Address'],
               $User['PhoneNumber'],
