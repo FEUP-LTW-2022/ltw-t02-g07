@@ -2,8 +2,8 @@
  declare(strict_types = 1);
  session_start();
  require_once(__DIR__ . '/../database/connection.db.php');
- require_once('database/restaurant.class.php');
- require_once('database/user.class.php');
+ require_once(__DIR__ . '/../database/restaurant.class.php');
+ require_once(__DIR__ . '/../database/user.class.php');
 
 $db = getDatabaseConnection();
 $orders = Restaurant::getRestaurantOrders($db,intval($_POST['id']));

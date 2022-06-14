@@ -6,10 +6,10 @@
   if (!isset($_SESSION['isOwner'])) die(header('Location: /'));
 
   require_once(__DIR__ . '/database/connection.db.php');
-  require_once('database/owner.class.php');
+  require_once(__DIR__ . '/database/owner.class.php');
 
-  require_once('templates/common.tpl.php');
-  require_once('templates/owner.tpl.php');
+  require_once(__DIR__ . '/templates/common.tpl.php');
+  require_once(__DIR__ . '/templates/owner.tpl.php');
 
   $db = getDatabaseConnection();
 

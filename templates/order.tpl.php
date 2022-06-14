@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1); 
 
-require_once('database/order.class.php')
+require_once(__DIR__ . '/../database/order.class.php')
 ?>
 
 

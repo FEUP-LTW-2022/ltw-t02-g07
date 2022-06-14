@@ -1,6 +1,6 @@
 <?php
   declare(strict_types = 1);
-  require_once('database/dish.class.php');
+  require_once(__DIR__ . '/../database/dish.class.php');
 
 
   class Order{

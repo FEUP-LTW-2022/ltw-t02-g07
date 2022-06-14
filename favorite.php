@@ -1,10 +1,10 @@
 <?php
   declare(strict_types = 1);
   require_once(__DIR__ . '/database/connection.db.php');
-  require_once('database/favorite.class.php');
+  require_once(__DIR__ . '/database/favorite.class.php');
 
-  require_once('templates/common.tpl.php');
-  require_once('templates/favorite.tpl.php');
+  require_once(__DIR__ . '/templates/common.tpl.php');
+  require_once(__DIR__ . '/templates/favorite.tpl.php');
   session_start();
   if (!isset($_SESSION['id'])) die(header('Location: /'));
 
