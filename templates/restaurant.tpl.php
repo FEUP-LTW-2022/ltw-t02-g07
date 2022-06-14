@@ -132,17 +132,17 @@
 
 
 <?php function drawRestaurant(Restaurant $restaurant, array $dishes, array $reviews, string $score) { ?>
+  <div id="searchDiv">
+    <input id="searchInput" type="search" placeholder="Search..." class="form-control">
+    <select name="orders" id="orderInput" onchange="stateChange()" class="drop">
+      <option value="" selected disabled hidden>Price</option>
+      <option value="ascending">Low to High</option>
+      <option value="descending">High to Low</option>
+    </select>
+  </div>
+  <h2><?=$restaurant->name?> <?=$score?>★</h2>
   <section id="dishes">
     <div class="part">
-      <h2><?=$restaurant->name?> <?=$score?>★</h2>
-      <div id="searchDiv">
-    <input id="searchInput" type="search" placeholder="Search..." class="form-control">
-      <select name="orders" id="orderInput" onchange="stateChange()" class="drop">
-        <option value="" selected disabled hidden>Price</option>
-        <option value="ascending">Low to High</option>
-        <option value="descending">High to Low</option>
-      </select>
-    </div>
     <div id="dishContainer">
       <?php foreach ($dishes as $dish) { ?>
       <article class="optionBox filterable" data-id=<?=$dish->id?>>
@@ -172,7 +172,7 @@
     <h2>Reviews</h2>
     <div class="reviewBox">
     <?php foreach ($reviews as $review) { ?>
-      <img src="../resources/reviews/<?=$review->picture?>" class="boxImage sharp">
+      <img src="../resources/reviews/<?=$review->picture?>" class="revImage">
       <div class="revDesc">
         <p class="info"><?=$review->description?></p>
         <p class="info"><?=$review->score?>★</p>
