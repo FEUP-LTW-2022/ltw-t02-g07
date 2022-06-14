@@ -501,9 +501,8 @@ footer {
         float: left;   
     }
 
-    .navbox {
-        display: block;
-        width: 80%;
+    nav li a{
+        font-size: small;
     }
 
     /* search and select */
