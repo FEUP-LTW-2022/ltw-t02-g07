@@ -20,7 +20,7 @@
 }
 
 .part {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     padding: 2%;
     justify-content: center;
@@ -172,8 +172,8 @@ min-width: 100%;
 box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .myTable thead tr {
-background-color: #dc6678;
-color: #ffffff;
+background-color: #83B3BF;
+color: #83B3BF;
 text-align: left;
 }
 .myTable th,
@@ -181,31 +181,58 @@ text-align: left;
     padding: 12px 15px;
 }
 .myTable tbody tr {
-border-bottom: 1px solid #dddddd;
+border-bottom: 1px solid #83B3BF;
 }
 .myTable tbody tr.active-row {
-background:#ccc;
+background:#a3cfd7d4;
 }
 
 .tab {
 overflow: hidden;
-border: 1px solid #ccc;
-background-color: #dc6678;
+border: 1px solid #83B3BF;
+background-color: #83B3BF;
+}
+
+
+#addForm input {
+    margin: 1% 5%;
+    width: 90%;
+}
+
+.column button {
+    float:right;
+    margin-right: 7%;;
+}
+
+#addDishForm input {
+    margin: 1% 5%;
+    width: 90%;
+}
+
+#deleteRestaurant {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    margin-right: 30%;
+
 }
 
 /* Style the buttons inside the tab */
-/*
+
 .tab button {
-background-color: inherit;
-float: left;
-border: none;
-outline: none;
-cursor: pointer;
-padding: 14px 16px;
-transition: 0.3s;
-font-size: 17px;
+
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    margin: 0 0;
+    
+
 }
-*/
+
 
 
 /* Change background color of buttons on hover */
@@ -229,7 +256,7 @@ border-top: none;
 }
 /* Create a two-column layout */
 .column {
-background-color: blanchedalmond;
+background-color: #d0e9f2be;
 float: left;
 width: 50%;
 padding: 5px;
@@ -273,7 +300,7 @@ display: table;
 
 #searchDiv input {
     width: 50%;
-    margin-left: 25%;
+    margin-left: 20%;
 }
 
 #restaurants {
@@ -452,6 +479,11 @@ display: table;
 .revDesc {
     margin: 2%;
 }
+
+
+
+
+
 
 
 /* footer */
