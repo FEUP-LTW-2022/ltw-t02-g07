@@ -23,8 +23,8 @@
     <div class="part">
       <?php foreach($restaurants as $restaurant) { ?> 
         <article id="optionBox" class="filterable optionBox" data-id=<?=$restaurant->id?>>
-          <img src="../resources/restaurants/<?=$restaurant->picture?>" id="boxImage">
-          <div id="boxDesc">
+          <img src="../resources/restaurants/<?=$restaurant->picture?>" id="boxImage" class="boxImage">
+          <div id="boxDesc" class="boxDesc">
             <div class="row">
             <div class="columnName">
               <a id="RestaurantName" href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
