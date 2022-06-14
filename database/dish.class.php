@@ -70,9 +70,9 @@
       );
     }
 
-    function addDish(PDO $db,int $restaurantId){
+    function addDish(PDO $db){
       $stmt = $db->prepare('INSERT INTO Dish (Name,Description,Price,Category,Picture,Promotion,Id_restaurant) VALUES (?,?,?,?,?,?,?)');
-      $stmt->execute(array($this->name,$this->description,$this->price,$this->category,$this->picture,$this->promotion,$restaurantId));
+      $stmt->execute(array($this->name,$this->description,$this->price,$this->category,$this->picture,$this->promotion,$this->restaurantId));
       return $db->lastInsertId();
     }
 

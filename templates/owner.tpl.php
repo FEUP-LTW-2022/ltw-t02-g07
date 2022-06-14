@@ -49,9 +49,8 @@
               ?>
               </tbody>
             </table>
-            <form autocomplete = "off" id="addForm">
             <button id="deleteRestaurant" onclick = "deleteRestaurant()">Delete highlighted restaurant</button>
-            <form id="addForm">
+            <form autocomplete = "off" id="addForm">
               <input type="text" name="name" id="name" placeholder="name*">
               <input type="text" name="picture" id="picture" placeholder = "picture">
               <input type="text" name="address" id="address" placeholder ="address*">
@@ -128,11 +127,12 @@
           function deleteRestaurant(){
             var table = document.getElementById('restaurantsTableBody');
             var highlighted = table.getElementsByClassName('active-row');
-            $.post("handlers/removeRestaurant.php",
+            $.post("../handlers/removeRestaurant.php",
                   {id:highlighted[0].dataset.id},
                   function(data){
+                    console.log(data);
                     highlighted[0].remove();
-                  })
+                  });
           }
           //adding onclick event addRestaurant form
           $(document).ready(function(){
