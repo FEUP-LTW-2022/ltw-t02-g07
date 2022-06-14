@@ -4,7 +4,7 @@
 <?php function drawHeader(){ ?>
 
 <!DOCTYPE html>
-
+<link rel="icon" href="images/logo.png">
 
 <html lang="en-US">
         <head>
