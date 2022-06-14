@@ -7,6 +7,9 @@
 
 $db = getDatabaseConnection();
 echo $_POST['data'][0];
+foreach($_POST['data'] as &$item){
+    $item = htmlspecialchars($item);
+}
 
 switch ($_POST['type']) {
     case 'restaurantsTable':

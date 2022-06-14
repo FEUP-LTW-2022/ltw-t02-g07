@@ -3,7 +3,7 @@
 <?php function drawProfileForm(User $User) { ?>
 <h2>Profile</h2>
 <form action="actions/action_edit_profile.php" method="post" class="profile">
-
+<input name = "csrf" id="csrf" type = "hidden" value = "<?=$_SESSION['csrf']?>">
   <label for="name">Name:</label>
   <input id="name" type="text" name="name" value="<?=$User->name?>">
   

@@ -13,10 +13,10 @@
 $db = getDatabaseConnection();
 $id = Restaurant::addRestaurant(
             $db,
-            $_POST['name'],
-            $_POST['picture'],
-            $_POST['address'],
-            $_POST['category'],
+            htmlspecialchars($_POST['name']),
+            htmlspecialchars($_POST['picture']),
+            htmlspecialchars($_POST['address']),
+            htmlspecialchars($_POST['category']),
             $_SESSION['id']
             );
 echo json_encode($id);

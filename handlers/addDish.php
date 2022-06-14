@@ -5,12 +5,12 @@
  require_once('database/dish.class.php');
 
 $dish = new Dish(0,
-                 $_POST['name'],
-                 $_POST['description'],
+                 htmlspecialchars($_POST['name']),
+                 htmlspecialchars($_POST['description']),
                  floatval($_POST['price']),
-                 $_POST['category'],
-                 $_POST['picture'],
-                 intval($_POST['promotion']),
+                 htmlspecialchars($_POST['category']),
+                 htmlspecialchars($_POST['picture']),
+                 intval(htmlspecialchars($_POST['promotion'])),
                  intval($_POST['restaurantId']));
 
 $db = getDatabaseConnection();
