@@ -3,7 +3,6 @@
   session_start();
   if (!isset($_SESSION['id'])) die(header('Location: /'));
   if (!isset($_SESSION['csrf'])) {
-    //echo $_SESSION['csrf'];
     $_SESSION['csrf'] =  bin2hex(openssl_random_pseudo_bytes(32));
   }
   require_once(__DIR__ . '/database/connection.db.php');

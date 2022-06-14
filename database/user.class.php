@@ -42,6 +42,14 @@
   
         $stmt->execute(array($this->name, $this->address, $this->phone, $this->email, $this->id));
       }
+      function savePassword($db,$hash) {
+        $stmt = $db->prepare('
+          UPDATE User SET Password = ?
+          WHERE UserId = ?
+        ');
+  
+        $stmt->execute(array($hash,$this->id));
+      }
     
     static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
       $stmt = $db->prepare("

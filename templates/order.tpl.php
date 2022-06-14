@@ -13,7 +13,7 @@ require_once(__DIR__ . '/../database/order.class.php')
     <div class="part">
       <?php foreach ($orders as $order) { ?>
       <article class="optionBox">
-        <p>Number: <a href="orderDetail.php?id=<?=$order->id?>&status=<?=$order->status?>"><?=$order->id?></a></p>
+        <p>Number: <a href="orderDetail.php?id=<?=$order->id?>&status=<?=$order->status?>&restId=<?=$order->id_restaurant?>"><?=$order->id?></a></p>
         <p class="info">Status: <?=$order->status?></p> 
       </article>
       <?php } ?>
@@ -37,8 +37,8 @@ require_once(__DIR__ . '/../database/order.class.php')
   </section>
     <div>
       <form action="actions/action_add_review.php" method="post" id="reviewInput">
-      <input name = "restaurantId" id="restaurantId" type="hidden" value="<?$dishes[0]->restaurantId?>">
-      <input name = "csrf" id="csrf" type = "hidden" value = "<?=$_SESSION['csrf']?>">
+      <input name = "restaurantId" id="restaurantId" type="hidden" value="<?=$_GET['restId']?>">
+      <input name = "csrf" id="csrf" type = "hidden" value = <?=$_SESSION['csrf']?>>
       <label for="score">Score:</label>
       <input class="reviewInput" type="range" id="score" name="score" oninput = "showScore(this.value)" onchange="showScore(this.value)"
          min="0" max="5" value="2.5" step="0.1">
