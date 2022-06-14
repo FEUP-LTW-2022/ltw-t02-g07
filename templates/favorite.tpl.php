@@ -16,7 +16,7 @@
       <article class="optionBox">
         <img src="../resources/restaurants/<?=$restaurant->picture?>" class="boxImage">
         <div class="boxDesc">
-          <a font-size= "2.5em" id="RestaurantName" href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
+          <a id="RestaurantName" href="restaurant.php?id=<?=$restaurant->id?>"><?=$restaurant->name?></a>
           <p class="info">Category: <?=$restaurant->category?></p>
           <p class="info">Address: <?=$restaurant->address?></p>
         </div>
@@ -36,6 +36,7 @@
           <p><?=$dish->name?></p>
           <p class="info"><?=$dish->description?></p>
           <p class="info">€<?=$dish->price?></p>
+          <a href="restaurant.php?id=<?=$restaurant->id?>">To restaurant</a>
         </div>
       </article>
       <?php } ?>
