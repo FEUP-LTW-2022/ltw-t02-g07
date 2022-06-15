@@ -230,7 +230,7 @@
                 url:'handlers/changeOrderState.php',
                 data:{id:orderId,state:select.value},
                 success: function(data){
-                  console.log("change success");
+                  console.log(data);
                 }
               });
 

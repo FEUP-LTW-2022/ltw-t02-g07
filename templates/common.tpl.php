@@ -74,7 +74,7 @@
     <div class="informBox">
       <input type="email" name="email" placeholder="email" required>
       <input type="name" name="name" placeholder="name" required>
-      <input type="password" name="password" placeholder="password" required minlength = "6" maxlength="20">
+      <input id='password'type="password" name="password" placeholder="password" required minlength = "6" maxlength="20">
       <label for="role">Choose a account type:</label>
       <select id="role" name="role">
         <option value="customer">Customer</option>
@@ -123,9 +123,6 @@
             strengthBadge.style.display = 'none'
         }
     });
-    form.addEventListener('submit', function(){
-      strengthBadge.textContent("")
-    })
 
     </script>
 <?php } ?>
