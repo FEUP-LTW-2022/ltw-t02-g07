@@ -25,6 +25,7 @@ Project Description: https://web.fe.up.pt/~arestivo/page/courses/ltw/project/
 - [x] List My Orders
 - [x] Mark Restaurant/Dish as Favourite
 - [x] Customer Can Leave a Review
+- [ ] View owner responses to reviews
 
 ## Credentials
 
