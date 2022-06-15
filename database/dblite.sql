@@ -123,8 +123,8 @@ CREATE TABLE Order_list
 );
 
 
-INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (1, 'User1', 'email2@gmail.com','Password2', 'House2', '5678');
-INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (2, 'User2', 'email3@gmail.com','Password2', 'House2', '5678');
+INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (1, 'Owner', 'email@owner.com','$2y$12$JGRsvtEgR1Q8zA6TUvRJV.F9Xam/E32UcIChxTFnERQYBx4E2U6me', 'House2', '5678');
+INSERT INTO User (UserId, Name, Email, Password, Address, PhoneNumber) VALUES (2, 'Customer', 'email@customer.com','$2y$12$SDHPjfdY5t.7U9OiUTByl.K3uk8/b3kmtPZuYRSonpvduCz4iYRVW', 'House2', '5678');
 
 
 INSERT INTO Owner (OwnerId) VALUES (1);
