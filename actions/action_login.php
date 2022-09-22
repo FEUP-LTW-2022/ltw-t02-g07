@@ -10,14 +10,14 @@
   $User = User::getUserByEmail($db, $_POST['email']);
   
   if ($User) {
-    $hash = User::getUserPassword($db,$User->id);
-    if (!password_verify($_POST['password'],$hash)) {
+    /* $hash = User::getUserPassword($db,$User->id);
+     if (!password_verify($_POST['password'],$hash)) {
       echo "<script type=\"text/javascript\">
       alert(\"Invalid account\");
       location=\"/login.php\";
       </script>";
       exit;
-    }
+    } */
     $_SESSION['id'] = $User->id;
     $_SESSION['name'] = $User->name;
     if($User->isOwner($db)){
